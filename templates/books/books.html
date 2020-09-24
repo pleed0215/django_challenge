@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="w-3/4 flex flex-col items-center">
+  <a class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center" href="{% url 'books:create' %}">Create a book</a>
+  <h1 class="text-2xl">Welcome to books</h1>
+    <div class="m-4 grid grid-cols-5">
+  {% for book in books %}
+    {% include "mixins/book.html" with book=book %}
+  {% endfor %}
+    </div>
+  <div>
+  page {{page_obj.number}} of {{page_obj.paginator.num_pages}}>> 
+      {% if  page_obj.has_previous %}
+        <a class="text-lg hover:font-bold" href="?page={{page_obj.previous_page_number}}"><span><< prev</span></a>
+      {% endif %}
+      {% for p in page_obj.paginator.page_range %}
+        {% if p != page_obj.number %}<a class="text-blue-500 hover:underline" href="?page={{p}}">
+        <span class="border p-1">&nbsp;{{p}}&nbsp;</span></a>
+        {% else %}
+        <span  class="border p-1">&nbsp;{{p}}&nbsp;</span>
+        {% endif %}
+      {% endfor %}
+      {% if  page_obj.number != page_obj.paginator.num_pages %}
+        <a class="text-lg hover:font-bold" href="?page={{page_obj.next_page_number}}"><span>>> next</span></a>
+      {% endif %}
+  </div>
+</div>
+{% endblock %}

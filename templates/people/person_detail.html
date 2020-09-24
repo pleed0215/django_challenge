@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="w-1/2 h-auto flex flex-col">
+  <a href="{% url 'people:update' person.pk %}" class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center">Update</a>
+  <div class="flex flex-col justify-start items-center h-auto mt-4">
+    <div class="border border-gray-700 bg-cover bg-center rounded-full" style="background-image: url({{ person.photo.url }}); width: 400px; height: 400px;">
+    </div>
+    <p class="text-2xl"><strong>Name</strong></p> 
+    <p class="text-3xl">{{ person.name }}</p>
+    <p class="text-2xl"><strong>Kind</strong></p>
+    <p class="text-3xl">{{ person.kind|capfirst }}</p>
+  </div>
+  <div class="border-t mt-4 py-4 w-full h-auto flex flex-col items-center">
+    <div class="w-full h-auto grid grid-cols-4">
+      {% for book in person.books.all %}
+        {% include "mixins/book.html" with book=book %}
+      {% endfor %}
+    </div>
+    <div class="w-full h-auto grid grid-cols-4">
+      {% for movie in person.movies.all %}
+        {% include "mixins/movie.html" with movie=movie %}
+      {% endfor %}
+    </div>
+    <div class="w-full h-auto grid grid-cols-4">
+      {% for movie in person.casts.all %}
+        {% include "mixins/movie.html" with movie=movie %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

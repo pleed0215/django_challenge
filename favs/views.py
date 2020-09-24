@@ -1,0 +1,45 @@
+from django.shortcuts import render, redirect, reverse
+from django.contrib.auth.decorators import login_required
+from django.http import Http404
+
+from movies.models import Movie
+from books.models import Book
+from .models import FavList
+
+# Create your views here.
+@login_required
+def toggle_fav(request, pk):
+  is_movie = request.GET.get("type") == "movie" and True or False
+  obj = None
+
+  user = request.user
+  fav_list = None
+
+  try:
+    if is_movie:
+      obj = Movie.objects.get(pk=pk)
+    else:
+      obj = Book.objects.get(pk=pk)
+
+    try:
+      fav_list = FavList.objects.get(created_by=user)
+    except FavList.DoesNotExist:
+      fav_list = FavList.objects.create(created_by=user)
+      fav_list.save()
+
+    if fav_list is not None:
+      if is_movie:
+        if obj in fav_list.movies.all():
+          fav_list.movies.remove(obj)
+        else:
+          fav_list.movies.add(obj)
+      else:
+        if obj in fav_list.books.all():
+          fav_list.books.remove(obj)
+        else:
+          fav_list.books.add(obj)
+
+    return redirect(reverse("core:home"))
+
+  except (Movie.DoesNotExist, Book.DoesNotExist):
+    return Http404("???")

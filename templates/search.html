@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="flex flex-col w-3/4">
+  <h1 class="text-2xl mb-4 border-b pb-2">Search term: "{{ search_by }}"</p>
+
+  {% if books.count > 0 %}
+  <h4 class="text-2xl">Book Searching Result...({{ books.count }} found{{ books.count|pluralize}})</h4>
+    <div class="m-4 grid grid-cols-4 gap-4 border p-4 w-full rounded-lg">
+    {% for book in books.all %}
+      {% include "mixins/book.html" with book=book %}
+    {% endfor %}
+    </div>
+  {% else %}
+  <h4 class="text-2xl mb-4 border-b">No books found with keyword '{{ search_by }}'</h4>
+  {% endif %}
+  {% if movies.count > 0 %}
+  <h4 class="text-2xl">Movie Searching Result...({{ movies.count }} found{{ books.count|pluralize}})</h4>
+    <div class="m-4 grid grid-cols-4 gap-4 border p-4 w-full rounded-lg">
+    {% for movie in movies.all %}
+      {% include "mixins/movie.html" with movie=movie %}
+    {% endfor %}
+    </div>
+  {% else %}
+  <h4 class="text-2xl mb-4 border-b">No movies found with keyword '{{ search_by }}'</h4>
+  {% endif %}
+  {% if people.count > 0 %}
+  <h4 class="text-2xl">Poeple Searching Result...({{ people.count }} found{{ books.count|pluralize}})</h4>
+    <div class="m-4 grid grid-cols-4 gap-4 border p-4 w-full rounded-lg">
+    {% for person in people.all %}
+      {% include "mixins/person.html" with person=person %}
+    {% endfor %}
+    </div>
+  {% else %}
+  <h4 class="text-2xl mb-4 border-b">No people found with keyword '{{ search_by }}'</h4>
+  {% endif %}
+  {% if categories.count > 0 %}
+  <h4 class="text-2xl">Category Searching Result...({{ categories.count }} found{{ books.count|pluralize}})</h4>
+    <div class="m-4 grid grid-cols-4 gap-4 border p-4 rounded-lg">
+      {% for category in categories %}
+        <a class="p-2 hover:bg-gray-700 hover:text-white transition duration-300 rounded-lg" href="{% url 'categories:detail' category.pk %}"><p>{{ category }}</p></a>
+
+      {% endfor %}
+    </div>
+  {% else %}
+  <h4 class="text-2xl">No categories found with keyword '{{ search_by }}'</h4>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+  <div class="w-1/2 h-auto border-box flex flex-col items-center border p-4">
+    <form class="forms w-1/2 flex flex-col items-center" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {% include "mixins/errors.html" with errors=form.non_field_errors %}
+      {% for field in form %}
+      <div class="grid grid-cols-3">
+        <div>
+        {{ field.label }}
+        </div>
+        <div class="col-start-2 col-end-4">
+        {{ field }}
+        </div>
+      </div>
+        {% include "mixins/errors.html" with errors=field.errors %}
+      {% endfor %}
+      <input type="submit" value="Login" class="self-center w-1/2 h-auto p-2 bg-teal-300 text-teal-700 rounded hover:bg-teal-600 hover:text-white transition duration-300 cursor-pointer"/>    
+    </form>
+
+  </div>
+{% endblock %}

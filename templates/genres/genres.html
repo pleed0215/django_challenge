@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="w-3/4 flex flex-col items-center">
+  <h1 class="text-2xl">Choose a genre you wanna see!</h1>
+    <div class="m-4 grid grid-cols-5 gap-4 border p-4 rounded-lg">
+      {% for category in categories %}
+        <a class="p-2 hover:bg-gray-700 hover:text-white transition duration-300 rounded-lg" href="{% url 'categories:detail' category.pk %}"><p>{{ category }}</p></a>
+
+      {% endfor %}
+      
+    </div>
+</div>
+{% endblock %}

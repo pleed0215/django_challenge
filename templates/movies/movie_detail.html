@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="flex flex-col w-1/2">
+  <a href="{% url 'movies:update' movie.pk %}" class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center">Update</a>
+  <div class="flex flex-col justify-start items-start h-auto">
+    <h1 class="text-2xl">{{ movie.title }}({{ movie.year }})</h1>
+    <div class="flex mt-2">
+      <div class="flex items-start justify-center">
+        <div class="self-start">
+        {% include "mixins/cover.html" with cover_url=movie.cover_image.url width=300 height=450 %}
+        </div>
+      </div>
+      <div class="ml-4 flex flex-col text-xl">
+        <p><strong>Rating</strong>: {{ movie.rating }}</p>
+        <p><strong>Category</strong>: <a href="{% url 'categories:detail' movie.category.pk %}" class="hover:underline">{{ movie.category }}</a></p>
+        <div>
+        <p><strong>Director</strong></p>
+          {% include "mixins/person.html" with person=movie.director circle=True %}
+        </div>
+        <div>
+          <h3 class="text-xl text-center font-bold">&lt;&lt;Casts&gt;&gt;</h3>
+          <div class="grid grid-cols-4 gap-4">
+          {% for cast in movie.cast.all %}
+            <div class="flex flex-col items-center hover:bg-gray-300 transition duration-300 p-3">
+              <a class="text-blue-400 flex flex-col items-center" href="{% url 'people:detail' cast.pk %}">
+              {% include "mixins/cover.html" with cover_url=cast.photo.url width=100 height=150 circle=True %}
+              <h4 class="text-sm text-center">
+                {{ cast.name }}
+              </h4>
+              </a>
+            </div>
+          {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

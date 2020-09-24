@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="flex flex-col w-1/2">
+  <a href="{% url 'books:update' book.pk %}" class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center">Update</a>
+  <div class="flex flex-col justify-start items-start h-auto">
+    <h1 class="text-2xl font-bold">{{ book.title }}({{ book.year }})</h1>
+    <div class="flex mt-2">
+      {% include "mixins/cover.html" with cover_url=book.cover_image.url width=300 height=450 %}
+      <div class="ml-4 flex flex-col text-xl">
+        <p><strong>Rating</strong>: {{ book.rating }}</p>
+        <p><strong>Category</strong>: <a href="{% url 'categories:detail' book.category.pk %}" class="hover:underline">{{ book.category }}</a></p>
+        <div>
+        <p class="font-bold">Writer</p>
+        {% include "mixins/person.html" with person=book.writer circle=True %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

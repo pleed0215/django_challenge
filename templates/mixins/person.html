@@ -1,0 +1,8 @@
+<div class="flex flex-col items-center hover:bg-gray-300 transition duration-300 p-3">
+  <a class="text-blue-400 flex flex-col items-center" href="{% url 'people:detail' person.pk %}">
+  {% include "mixins/cover.html" with cover_url=person.photo.url width=200 height=300 %}
+  <h4>
+    {{ person.name }}({{person.kind}}) - {{ person.created_at }}
+  </h4>
+  </a>
+</div>
