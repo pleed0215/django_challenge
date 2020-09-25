@@ -9,6 +9,12 @@ verify_ssl = true
 Django = "*"
 django-seed = "*"
 pillow = "*"
+pipenv-to-requirements = "*"
+awsebcli = "*"
+psycopg2-binary = "*"
+django-storages = "*"
+boto3 = "*"
+sentry-sdk = "*"
 
 [requires]
 python_version = "3.8"

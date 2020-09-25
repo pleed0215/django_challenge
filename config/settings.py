@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,9 +25,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'b#s*_o(3t3ai_k(c5po@h7a=nj5#vjkd3u7ckhnx@)mi=8fn67'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.environ.get("DEBUG", True))
 
 ALLOWED_HOSTS = []
+
 
 
 # Application definition
@@ -54,6 +57,7 @@ PROJECT_APPS = [
 
 THIRD_PARTY_APPS = [
   "django_seed",
+  "storages",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS 
@@ -92,12 +96,24 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if DEBUG: 
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "HOST": os.environ.get("RDS_HOST"),
+            "NAME": os.environ.get("RDS_NAME"),
+            "PASSWORD": os.environ.get("RDS_PASSWORD"),
+            "PORT": "5432",
+            "USER": os.environ.get("RDS_USER"),
+        }
+    }
 
 
 # Password validation
@@ -118,6 +134,33 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+if not DEBUG:
+    sentry_sdk.init(
+        dsn="https://1ab29b256e884d849696c1295fa1f9fb@o438795.ingest.sentry.io/5440873",
+        integrations=[DjangoIntegration()],
+        traces_sample_rate=1.0,
+
+        # If you wish to associate users to errors (assuming you are using
+        # django.contrib.auth) you may enable sending PII data.
+        send_default_pii=True
+    )
+    DEFAULT_FILE_STORAGE = 'config.custom_storages.StaticStorage'
+    STATICFILES_STORAGE = 'config.custom_storages.UploadsStorage'
+    AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_ID")
+    AWS_SECRET_ACCESS_KEY =os.environ.get("AWS_ACCESS_SECRET")
+    AWS_STORAGE_BUCKET_NAME = "django-challenge-storage"
+    AWS_AUTO_CREATE_BUCKET = True
+    AWS_BUCKET_ACL = "public-read"
+    AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
+    AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+    STATIC_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/static/"
+    MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/media/"
+    
+
+else:
+    STATIC_URL = '/static/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
+    MEDIA_URL = "/media/"
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -136,9 +179,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
-MEDIA_URL = "/media/"
+
 
 
 ALLOWED_HOSTS = ['*']
