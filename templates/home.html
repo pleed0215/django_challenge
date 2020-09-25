@@ -1,45 +1,50 @@
 {% extends "base.html" %}
 
 {% block content %}
+{{ DEBUG }}
 <div class="ml-4 flex flex-col items-center w-5/6">
   <div class="flex flex-col w-full border-b mb-8">
-    <h1 class="text-2xl mb-4">Latest movies<a class="text-lg hover:underline" href="{% url 'movies:movies' %}">(See all..)</a><a class="text-lg hover:underline" href="{% url 'movies:create' %}">[Add movie]</a></h1>
-      <div class="m-4 grid grid-cols-5 gap-4">
-    {% for obj in page.object_list %}
-          {% include "mixins/movie.html" with movie=obj.movie %}
-    {% endfor %}
-      </div>
+    <h1 class="text-2xl mb-4">Latest movies<a class="text-lg hover:underline" href="{% url 'movies:movies' %}">(See
+        all..)</a><a class="text-lg hover:underline" href="{% url 'movies:create' %}">[Add movie]</a></h1>
+    <div class="m-4 grid grid-cols-5 gap-4">
+      {% for obj in page.object_list %}
+      {% include "mixins/movie.html" with movie=obj.movie %}
+      {% endfor %}
+    </div>
   </div>
   <div class="flex flex-col w-full border-b mb-8">
-    <h1 class="text-2xl mb-4">Latest Books<a class="text-lg hover:underline" href="{% url 'books:books' %}">(See all..)</a><a class="text-lg hover:underline" href="{% url 'books:create' %}">[Add book]</a></h1>
-      <div class="m-4 grid grid-cols-2 grid-cols-5 gap-4">
-    {% for obj in page.object_list %}
-          {% include "mixins/book.html" with book=obj.book %}
-    {% endfor %}
-      </div>
+    <h1 class="text-2xl mb-4">Latest Books<a class="text-lg hover:underline" href="{% url 'books:books' %}">(See
+        all..)</a><a class="text-lg hover:underline" href="{% url 'books:create' %}">[Add book]</a></h1>
+    <div class="m-4 grid grid-cols-2 grid-cols-5 gap-4">
+      {% for obj in page.object_list %}
+      {% include "mixins/book.html" with book=obj.book %}
+      {% endfor %}
+    </div>
   </div>
   <div class="flex flex-col w-full border-b mb-8">
-    <h1 class="text-2xl mb-4">Latest people<a class="text-lg hover:underline" href="{% url 'people:people' %}">(See all..)</a><a class="text-lg hover:underline" href="{% url 'people:create' %}">[Add person]</a></h1>
-      <div class="m-4 grid grid-cols-5 gap-4">
-    {% for obj in page.object_list %}
-          {% include "mixins/person.html" with person=obj.person %}
-    {% endfor %}
-      </div>
+    <h1 class="text-2xl mb-4">Latest people<a class="text-lg hover:underline" href="{% url 'people:people' %}">(See
+        all..)</a><a class="text-lg hover:underline" href="{% url 'people:create' %}">[Add person]</a></h1>
+    <div class="m-4 grid grid-cols-5 gap-4">
+      {% for obj in page.object_list %}
+      {% include "mixins/person.html" with person=obj.person %}
+      {% endfor %}
+    </div>
   </div>
   <div>
-  page {{page.number}} of {{page.paginator.num_pages}}>> 
+    page {{page.number}} of {{page.paginator.num_pages}}>>
     {% if  page.has_previous %}
-      <a class="text-lg hover:font-bold" href="?page={{page.previous_page_number}}"><span><< prev</span></a>
+    <a class="text-lg hover:font-bold" href="?page={{page.previous_page_number}}"><span>
+        << prev</span></a>
     {% endif %}
     {% for p in page.paginator.page_range %}
-      {% if p != page.number %}<a class="text-blue-500 hover:underline" href="?page={{p}}">
+    {% if p != page.number %}<a class="text-blue-500 hover:underline" href="?page={{p}}">
       <span class="border p-1">&nbsp;{{p}}&nbsp;</span></a>
-      {% else %}
-      <span class="border p-1">&nbsp;{{p}}&nbsp;</span>
-      {% endif %}
+    {% else %}
+    <span class="border p-1">&nbsp;{{p}}&nbsp;</span>
+    {% endif %}
     {% endfor %}
     {% if  page.number != page.paginator.num_pages %}
-      <a class="text-lg hover:font-bold" href="?page={{page.next_page_number}}"><span>>> next</span></a>
+    <a class="text-lg hover:font-bold" href="?page={{page.next_page_number}}"><span>>> next</span></a>
     {% endif %}
   </div>
 </div>

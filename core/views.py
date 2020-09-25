@@ -6,6 +6,7 @@ from movies.models import Movie
 from books.models import Book
 from people.models import Person
 from categories.models import Category
+from django.conf import settings
 
 def resolve_home(request):
   page = int(request.GET.get("page", 1))
@@ -19,14 +20,14 @@ def resolve_home(request):
     all_objects.append({
       "person": all_people[i],
       "book": all_books[i],
-      "movie": all_movies[i]
+      "movie": all_movies[i],
     })
 
   paginator = Paginator(all_objects, page_size)
   try:
       page = paginator.page(page)
 
-      return render(request, "home.html", context={"page": page, "page_title": "Home"},)
+      return render(request, "home.html", context={"page": page, "page_title": "Home", "DEBUG": settings.DEBUG,},)
   except EmptyPage:
       return redirect("/")
 
