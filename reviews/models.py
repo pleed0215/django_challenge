@@ -5,7 +5,7 @@ class Review(CoreModel):
 
   """ Review Model """ 
 
-  created_by = models.ForeignKey("users.User", on_delete=models.CASCADE, related_name="reviews")
+  created_by = models.ForeignKey("users.User", on_delete=models.CASCADE, related_name="reviews", null=True)
   text = models.TextField()
   movie = models.ForeignKey("movies.Movie", on_delete=models.CASCADE, related_name="reviews", null=True, blank=True)
   book = models.ForeignKey("books.Book", on_delete=models.CASCADE, related_name="reviews", null=True, blank=True)

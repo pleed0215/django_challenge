@@ -2,21 +2,24 @@
 
 <div class="w-full flex flex-col items-center hover:bg-gray-300 transition duration-300 p-3">
   <a class="w-full text-blue-400 flex flex-col overflow-hidden" href="{% url 'books:detail' book.pk %}">
-  {% include "mixins/cover.html" with cover_url=book.cover_image.url width=200 height=300 %}
-  <h4 class="text-lg truncate text-center">
-    {{ book.title }}
-  </h4>
-  <p class="text-center">
-     {{ book.year }}
-  </p>
+    {% include "mixins/cover.html" with cover_url=book.cover_image.url width=200 height=300 %}
+    <h4 class="text-lg truncate text-center">
+      {{ book.title }}
+    </h4>
+    <p class="text-center">
+      {{ book.year }}
+    </p>
   </a>
   {% if user.is_authenticated %}
-    {% is_in_fav book.pk False as is_in_fav_boolean %}
-    {% if is_in_fav_boolean %}
-    <a href="{% url 'favs:toggle' book.pk %}?type=book" class="text-center w-3/4 p-2 bg-red-300 text-red-700 hover:bg-red-700 hover:text-white transition duration-300 rounded-lg text-sm">Remove from favorites</a>
-    {% else %}
-    
-    <a href="{% url 'favs:toggle' book.pk %}?type=book" class="text-center w-3/4 p-2 bg-yellow-300 text-yellow-700 hover:bg-yellow-700 hover:text-white transition duration-300 rounded-lg text-sm">Add to favorites</a>
-    {% endif %}
+  {% is_in_fav book.pk False as is_in_fav_boolean %}
+  {% if is_in_fav_boolean %}
+  <a href="{% url 'favs:toggle' book.pk %}?type=book&next={{request.get_full_path}}"
+    class="text-center w-3/4 p-2 bg-red-300 text-red-700 hover:bg-red-700 hover:text-white transition duration-300 rounded-lg text-sm">Remove
+    from favorites</a>
+  {% else %}
+  <a href="{% url 'favs:toggle' book.pk %}?type=book&next={{request.get_full_path}}"
+    class="text-center w-3/4 p-2 bg-yellow-300 text-yellow-700 hover:bg-yellow-700 hover:text-white transition duration-300 rounded-lg text-sm">Add
+    to favorites</a>
+  {% endif %}
   {% endif %}
 </div>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="w-1/2 h-auto">
+    <form class="forms w-full border p-5" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="flex w-full h-auto">
+            <div class="flex w-1/4 h-auto">
+                {{field.label}}
+            </div>
+            <div class="flex w-1/2 h-auto">
+                {{field}}
+            </div>
+        </div>
+        {% include 'mixins/errors.html' with errors=field.errors %}
+        {% endfor %}
+        <div class="">
+            {% include "mixins/errors.html" with errors=form.non_field_errors %}
+        </div>
+        <div class="amb-2 bg-red-500 text-white hover:bg-red-400 transition duration-200">
+            <button class="w-full h-full mx-auto">Review</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

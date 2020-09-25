@@ -5,7 +5,7 @@ class FavList(CoreModel):
   
   """ Favourite List """
 
-  created_by = models.OneToOneField("users.User", on_delete=models.CASCADE)
+  created_by = models.OneToOneField("users.User", on_delete=models.CASCADE, related_name="fav_list")
   books = models.ManyToManyField("books.Book", related_name="fav_lists")
   movies = models.ManyToManyField("movies.Movie", related_name="fav_lists")
 

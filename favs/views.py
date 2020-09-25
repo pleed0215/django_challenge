@@ -10,6 +10,7 @@ from .models import FavList
 @login_required
 def toggle_fav(request, pk):
   is_movie = request.GET.get("type") == "movie" and True or False
+  next_url = request.GET.get("next")
   obj = None
 
   user = request.user
@@ -39,7 +40,10 @@ def toggle_fav(request, pk):
         else:
           fav_list.books.add(obj)
 
-    return redirect(reverse("core:home"))
+    if next_url is not None:
+      return redirect(next_url)
+    else:
+      return redirect(reverse("core:home"))
 
   except (Movie.DoesNotExist, Book.DoesNotExist):
     return Http404("???")
