@@ -15,6 +15,7 @@ psycopg2-binary = "*"
 django-storages = "*"
 boto3 = "*"
 sentry-sdk = "*"
+python-dotenv = "*"
 
 [requires]
 python_version = "3.8"
