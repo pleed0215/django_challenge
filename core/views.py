@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator, EmptyPage
 from django.db.models import Q
@@ -27,7 +28,7 @@ def resolve_home(request):
   try:
       page = paginator.page(page)
 
-      return render(request, "home.html", context={"page": page, "page_title": "Home", "DEBUG": settings.DEBUG,},)
+      return render(request, "home.html", context={"page": page, "page_title": "Home", "DEBUG": os.environ.get("DEBUG"),},)
   except EmptyPage:
       return redirect("/")
 
