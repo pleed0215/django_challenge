@@ -28,7 +28,7 @@ def resolve_home(request):
   try:
       page = paginator.page(page)
 
-      return render(request, "home.html", context={"page": page, "page_title": "Home", "DEBUG": os.environ.get("DEBUG"),},)
+      return render(request, "home.html", context={"page": page, "page_title": "Home", },)
   except EmptyPage:
       return redirect("/")
 
