@@ -1,3 +1,4 @@
+from random import choices
 from django.core.management.base import BaseCommand
 from favs.models import FavList
 from users.models import User
