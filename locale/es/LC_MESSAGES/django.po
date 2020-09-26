@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 07:32+0900\n"
+"POT-Creation-Date: 2020-09-27 08:43+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,6 @@ msgid "You need to login"
 msgstr "Iniciar sesión."
 
 #: favs/views.py:40
-#| msgid "Remove from favorites"
 msgid "The movie was removed from favorite list"
 msgstr "Eliminar de favoritos"
 
@@ -44,7 +43,6 @@ msgid "The movie was added to favorite list"
 msgstr "La película se agregó a la lista de favoritos."
 
 #: favs/views.py:55
-#| msgid "Remove from favorites"
 msgid "The book was removed from favorite list"
 msgstr "Eliminar de favoritos"
 
@@ -69,12 +67,10 @@ msgid "Person data is successfully updated."
 msgstr "Los datos personales se actualizaron correctamente."
 
 #: reviews/views.py:28
-#| msgid "Reviewed"
 msgid "Review created."
 msgstr "Revisión creada"
 
 #: reviews/views.py:69
-#| msgid "Reviewed"
 msgid "Review is deleted"
 msgstr "Se borra la reseña"
 
@@ -204,6 +200,10 @@ msgstr "Género"
 #: templates/partials/header.html:27
 msgid "People"
 msgstr "Persona"
+
+#: templates/partials/header.html:34
+msgid "Search by kind, movie or book title, genre."
+msgstr "Busque por tipo, título de película o libro, género."
 
 #: templates/partials/header.html:48
 msgid "Log out"

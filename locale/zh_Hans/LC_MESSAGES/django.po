@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 07:33+0900\n"
+"POT-Creation-Date: 2020-09-27 08:43+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,6 @@ msgid "You need to login"
 msgstr "你需要登入"
 
 #: favs/views.py:40
-#| msgid "Remove from favorites"
 msgid "The movie was removed from favorite list"
 msgstr "电影已从收藏夹列表中删除"
 
@@ -44,7 +43,6 @@ msgid "The movie was added to favorite list"
 msgstr "电影已添加到收藏夹列表"
 
 #: favs/views.py:55
-#| msgid "Remove from favorites"
 msgid "The book was removed from favorite list"
 msgstr "这本书已从收藏夹清单中删除"
 
@@ -69,12 +67,10 @@ msgid "Person data is successfully updated."
 msgstr "人员数据已成功更新。"
 
 #: reviews/views.py:28
-#| msgid "Reviewed"
 msgid "Review created."
 msgstr "评论已创建。"
 
 #: reviews/views.py:69
-#| msgid "Reviewed"
 msgid "Review is deleted"
 msgstr "评论已删除"
 
@@ -204,6 +200,10 @@ msgstr "体裁"
 #: templates/partials/header.html:27
 msgid "People"
 msgstr "People"
+
+#: templates/partials/header.html:34
+msgid "Search by kind, movie or book title, genre."
+msgstr "通过输入演员，作者，导演，电影或书籍标题或类型进行搜索。"
 
 #: templates/partials/header.html:48
 msgid "Log out"

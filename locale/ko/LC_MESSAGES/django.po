@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-27 07:32+0900\n"
+"POT-Creation-Date: 2020-09-27 08:43+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,7 +35,6 @@ msgid "You need to login"
 msgstr "로그인이 필요합니다."
 
 #: favs/views.py:40
-#| msgid "Remove from favorites"
 msgid "The movie was removed from favorite list"
 msgstr "즐겨찾기에서 제거되었습니다."
 
@@ -44,7 +43,6 @@ msgid "The movie was added to favorite list"
 msgstr "즐겨찾기에 추가 되었습니다."
 
 #: favs/views.py:55
-#| msgid "Remove from favorites"
 msgid "The book was removed from favorite list"
 msgstr "즐겨찾기에서 제거 되었습니다."
 
@@ -69,12 +67,10 @@ msgid "Person data is successfully updated."
 msgstr "자료가 수정되었습니다."
 
 #: reviews/views.py:28
-#| msgid "Reviewed"
 msgid "Review created."
 msgstr "리뷰 작성 완료"
 
 #: reviews/views.py:69
-#| msgid "Reviewed"
 msgid "Review is deleted"
 msgstr "리뷰가 삭제 되었습니다."
 
@@ -204,6 +200,10 @@ msgstr "장르"
 #: templates/partials/header.html:27
 msgid "People"
 msgstr "피플"
+
+#: templates/partials/header.html:34
+msgid "Search by kind, movie or book title, genre."
+msgstr "배우, 작가, 감독, 영화나 책 제목, 장르를 입력하여 검색하세요."
 
 #: templates/partials/header.html:48
 msgid "Log out"

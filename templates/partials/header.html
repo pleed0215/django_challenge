@@ -31,7 +31,7 @@
     <form class="w-full h-full flex items-center justify-center" action="{% url 'core:search' %}" method="get">
       {% csrf_token %}
       
-      <input class="w-full h-8 border border-gray-500 px-2 border-box" type="text" placeholder="Search field" name="search-term"/>
+      <input class="w-full h-8 border border-gray-500 px-2 border-box" type="text" placeholder="{% trans 'Search by kind, movie or book title, genre.' %}" name="search-term"/>
       <i class="fas fa-search z-40 -mx-5"></i>
     </form>
   </div>
