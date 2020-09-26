@@ -62,11 +62,11 @@
     {% include "partials/header.html" %}
   </header>
   {% include "mixins/message.html" %}
-  <main class="w-full h-auto mt-4 flex flex-col items-center">
+  <main class="w-full h-auto min-h-screen mt-4 flex flex-col items-center">
     {% block content %}
     {% endblock content %}
   </main>
-  <footer class="mt-4">
+  <footer class="mt-4 h-20 flex flex-col justify-center items-center">
     {% include "partials/footer.html" %}
   </footer>
   <script src="https://kit.fontawesome.com/3e52747b95.js" crossorigin="anonymous"></script>
