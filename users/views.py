@@ -125,6 +125,7 @@ def switch_language(request):
 
         response = HttpResponse(status=200)
         response.set_cookie(settings.LANGUAGE_COOKIE_NAME, lang)
+
         return response
 
     return HttpResponse(status=400)
