@@ -54,6 +54,9 @@ class SignupView(LoggedOutOnlyView, SuccessMessageMixin, FormView):
     form_class = forms.SignupForm
     success_url = reverse_lazy("core:home")
     success_message = "Congratulation! Welcome!"
+    extra_context = {
+    "page_title": "Sign up"
+    }
 
     def form_valid(self, form):
       username = form.cleaned_data.get("username")
@@ -89,7 +92,9 @@ class UserDetailView(LoginOnlyView, DetailView):
     return self.request.user
 
   template_name = "users/profile.html"
-
+  extra_context = {
+    "page_title": "Profile"
+  }
 
 class UpdateProfileView(LoginOnlyView, SuccessMessageMixin, UpdateView):
 
@@ -102,6 +107,9 @@ class UpdateProfileView(LoginOnlyView, SuccessMessageMixin, UpdateView):
     "fav_book_cat",
     "fav_movie_cat",
   )
+  extra_context = {
+    "page_title": "Edit Profile"
+  }
   success_message = "Successfully updated your profile."
   def get_object(self, queryset=None):
     return self.request.user
@@ -114,6 +122,9 @@ class UpdatePasswordView(LoginOnlyView, SuccessMessageMixin, auth_views.Password
   template_name = "users/edit_password.html"
   success_url = reverse_lazy("users:update")
   success_message = "Password changed successfully"
+  extra_context = {
+    "page_title": "Password change"
+  }
 
 
 def switch_language(request):
