@@ -1,27 +1,30 @@
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{{ LANGUAGE_CODE }}
 <div class="w-full h-20 border-b absolute inset-0 flex items-center justify-start box-border">
   <a class="w-1/12 h-full ml-10" href="{% url 'core:home' %}">
     <div class="w-full h-full flex items-center justify-center transition duration-150 hover:bg-gray-700 hover:text-white {% if 'Home' in page_title %}border-b-2 border-teal-500{% endif %}">
-        <p>Home</p>
+        <p>{% trans "Home" %}</p>
     </div>
   </a>
   <a class="w-1/12 h-full" href="{% url 'movies:movies' %}">
     <div class="w-full h-full flex items-center justify-center transition duration-150 hover:bg-gray-700 hover:text-white {% if 'Movie' in page_title %}border-b-2 border-teal-500{% endif %}">
-      <p>Movies</p>
+      <p>{% trans "Movies" %}</p>
     </div>
   </a>
   <a class="w-1/12 h-full" href="{% url 'books:books' %}">
     <div class="w-full h-full flex items-center justify-center transition duration-150 hover:bg-gray-700 hover:text-white {% if 'Book' in page_title %}border-b-2 border-teal-500{% endif %}">
-      <p>Books</p>
+      <p>{% trans "Books" %}</p>
     </div>
   </a>
   <a class="w-1/12 h-full" href="{% url 'genres:categories' %}">
     <div class="w-full h-full flex items-center justify-center transition duration-150 hover:bg-gray-700 hover:text-white {% if 'Genre' in page_title %}border-b-2 border-teal-500{% endif %}">
-      <p>Genres</p>
+      <p>{% trans "Genres" %}</p>
     </div>
   </a>
   <a class="w-1/12 h-full" href="{% url 'people:people' %}">
     <div class="w-full h-full flex items-center justify-center transition duration-150 hover:bg-gray-700 hover:text-white {% if 'People' in page_title or 'Person' in page_title %}border-b-2 border-teal-500{% endif %}">
-      <p>People</p>
+      <p>{% trans "People" %}</p>
     </div>
   </a>
   <div class="w-3/12 h-full flex items-center justify-center">
@@ -32,14 +35,22 @@
       <i class="fas fa-search z-40 -mx-5"></i>
     </form>
   </div>
+  <div class="ml-4 w-1/12 h-8 flex">
+    <select id="lang-select" class="ml-2 w-full h-8" style="outline: 1px gray solid;">
+        <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>English</option>
+        <option value="es" {% if LANGUAGE_CODE == 'es' %}selected{% endif %}>Spanish</option>
+        <option value="ko" {% if LANGUAGE_CODE == 'ko' %}selected{% endif %}>Korean</option>
+        <option value="zh-CN" {% if LANGUAGE_CODE == 'zh-CN' %}selected{% endif %}>Chinese</option>
+    </select>
+  </div>
   <div class="w-1/4 h-full flex justify-center items-center self-end ml-10">
     {% if user.is_authenticated %}
-    <a href="{% url 'users:logout' %}" class="hover:underline"><p>Log out</p></a>
-    <a href="{% url 'users:profile' %}" class="hover:underline ml-5"><p>Profile</p></a>
+    <a href="{% url 'users:logout' %}" class="hover:underline"><p>{% trans "Log out" %}</p></a>
+    <a href="{% url 'users:profile' %}" class="hover:underline ml-5"><p>{% trans "Profile" %}</p></a>
     <p class="ml-5">Hello, {{ user }}</p>
     {% else %}
-    <a href="{% url 'users:login' %}" class="hover:underline"><p>Log in</p></a>
-    <a href="{% url 'users:create' %}" class="hover:underline"><p class="ml-5">Sign up</p></a>
+    <a href="{% url 'users:login' %}" class="hover:underline"><p>{% trans "Log in" %}</p></a>
+    <a href="{% url 'users:create' %}" class="hover:underline"><p class="ml-5">{% trans "Sign up" %}</p></a>
     {% endif %}
   </div>
 </div>

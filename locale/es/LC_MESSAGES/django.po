@@ -1,0 +1,162 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-26 14:50+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: core/mixins.py:14
+msgid "Nope, you don't need to go there."
+msgstr ""
+
+#: core/mixins.py:21
+msgid "You need to login"
+msgstr "Iniciar sesión."
+
+#: templates/books/book_detail.html:8 templates/movies/movie_detail.html:9
+#: templates/people/person_detail.html:6
+msgid "Update"
+msgstr "Renovar"
+
+#: templates/books/book_detail.html:15 templates/movies/movie_detail.html:15
+msgid "Review"
+msgstr "Revista"
+
+#: templates/books/book_detail.html:17 templates/movies/movie_detail.html:17
+msgid "Reviewed"
+msgstr "Revisado"
+
+#: templates/books/book_detail.html:39
+msgid "Writer"
+msgstr "Autora"
+
+#: templates/books/book_detail.html:53
+msgid "DELETE"
+msgstr "Eliminación"
+
+#: templates/books/books.html:6
+msgid "Create a book"
+msgstr "Hacer un libro"
+
+#: templates/books/books.html:7
+msgid "Welcome to books"
+msgstr "Bienvenido al libro."
+
+#: templates/genres/genre_detail.html:6
+msgid "Genre"
+msgstr "Los géneros."
+
+#: templates/genres/genre_detail.html:15
+msgid "No books founded in this genre."
+msgstr "No hay ningún libro de este tipo."
+
+#: templates/genres/genre_detail.html:25
+msgid "No movies founded in this genre."
+msgstr ""
+
+#: templates/genres/genres.html:5
+msgid "Choose a genre you wanna see!"
+msgstr "No hay ninguna película de este tipo."
+
+#: templates/mixins/book.html:17 templates/mixins/movie.html:16
+#: templates/movies/movie_detail.html:23
+msgid "Remove from favorites"
+msgstr "Desecho"
+
+#: templates/mixins/book.html:20 templates/mixins/movie.html:20
+#: templates/movies/movie_detail.html:26
+msgid "Add to favorites"
+msgstr "Salsa"
+
+#: templates/movies/movie_detail.html:38
+msgid "Rating"
+msgstr "Ranking"
+
+#: templates/movies/movie_detail.html:39
+msgid "Category"
+msgstr "Clasificar"
+
+#: templates/movies/movie_detail.html:42
+msgid "Director"
+msgstr "Superintendente"
+
+#: templates/movies/movie_detail.html:46
+msgid "Casts"
+msgstr "Yeso"
+
+#: templates/movies/movies.html:6
+msgid "Create a movie"
+msgstr "Vídeo"
+
+#: templates/movies/movies.html:7
+msgid "Welcome to movies"
+msgstr "Comienzo de una película"
+
+#: templates/partials/header.html:4
+msgid "Home"
+msgstr "Ranura"
+
+#: templates/partials/header.html:9
+msgid "Movies"
+msgstr "Película"
+
+#: templates/partials/header.html:14
+msgid "Books"
+msgstr "Libro"
+
+#: templates/partials/header.html:19
+msgid "Genres"
+msgstr "Género"
+
+#: templates/partials/header.html:24
+msgid "People"
+msgstr "Persona"
+
+#: templates/partials/header.html:37
+msgid "Log out"
+msgstr "desconectar"
+
+#: templates/partials/header.html:38
+msgid "Profile"
+msgstr "Perfil"
+
+#: templates/partials/header.html:41
+msgid "Log in"
+msgstr "Logaritmo"
+
+#: templates/partials/header.html:42
+msgid "Sign up"
+msgstr "Registrar"
+
+#: templates/people/people.html:6
+msgid "Create a Person"
+msgstr "Creación de usuarios"
+
+#: templates/people/people.html:7
+msgid "Welcome to people"
+msgstr "Saludo de bienvenida"
+
+#: templates/people/person_detail.html:10
+msgid "Name"
+msgstr "Nombre"
+
+#: templates/people/person_detail.html:12
+msgid "Kind"
+msgstr "Benigno"
+
+#: templates/users/login.html:20
+msgid "Login"
+msgstr "Logaritmo"

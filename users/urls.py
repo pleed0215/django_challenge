@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import LoginView, logout_view, SignupView, UserDetailView, UpdateProfileView, UpdatePasswordView
+from .views import LoginView, logout_view, SignupView, UserDetailView, UpdateProfileView, UpdatePasswordView, switch_language
 
 app_name = "users"
 
@@ -10,4 +10,5 @@ urlpatterns = [
   path("me/", UserDetailView.as_view(), name="profile"),
   path("me/update/", UpdateProfileView.as_view(), name="update"),
   path("me/password/", UpdatePasswordView.as_view(), name="password"),
+  path("switch_lang/", switch_language, name="switch_lang"),
 ]

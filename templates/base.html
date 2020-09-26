@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,4 +32,13 @@
     {% include "partials/footer.html" %}
   </footer>
   <script src="https://kit.fontawesome.com/3e52747b95.js" crossorigin="anonymous"></script>
+  <script>
+    const langSelect = document.getElementById("lang-select");
+    
+    const onChange = () => {
+      fetch (`{% url 'users:switch_lang' %}?lang=${langSelect.value}`).then ( () => window.location.reload() );
+    }
+
+    langSelect.addEventListener("change", onChange);
+  </script>
 </body>
