@@ -5,26 +5,26 @@
 {% block content %}
 <div class="flex flex-col w-1/2">
   <a href="{% url 'books:update' book.pk %}"
-    class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center">Update</a>
+    class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center">{% trans "Update" %}</a>
 
   {% if user.is_authenticated %}
   {% is_reviewed book.pk False as reviewed %}
 
   {% if not reviewed %}
   <a href="{% url 'reviews:create' book.pk %}?type=book&next={{ request.path }}"
-    class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center">Review</a>
+    class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center">{% trans "Review" %}</a>
   {% else %}
-  <p class="border bg-gray-200 text-gray-400 p-2 mb-4 transition duration-300 rounded w-full text-center">Reviewed</p>
+  <p class="border bg-gray-200 text-gray-400 p-2 mb-4 transition duration-300 rounded w-full text-center">{% trans "Reviewed" %}</p>
     {% endif %}
     {% is_in_fav book.pk False as is_in_fav_boolean %}
     {% if is_in_fav_boolean %}
     <a href="{% url 'favs:toggle' book.pk %}?type=book&next={{request.get_full_path}}"
-      class="text-center w-full p-2 bg-red-300 text-red-700 hover:bg-red-700 hover:text-white transition duration-300 rounded">Remove
-      from favorites</a>
+      class="text-center w-full p-2 bg-red-300 text-red-700 hover:bg-red-700 hover:text-white transition duration-300 rounded">{% trans "Remove
+      from favorites" %}</a>
     {% else %}
     <a href="{% url 'favs:toggle' book.pk %}?type=book&next={{request.get_full_path}}"
-      class="text-center w-full p-2 bg-yellow-300 text-yellow-700 hover:bg-yellow-700 hover:text-white transition duration-300 rounded">Add
-      to favorites</a>
+      class="text-center w-full p-2 bg-yellow-300 text-yellow-700 hover:bg-yellow-700 hover:text-white transition duration-300 rounded">{% trans "Add
+      to favorites" %}</a>
     {% endif %}
     {% endif %}
   <div class="flex flex-col justify-start items-start h-auto border-b pb-5 mb-5">
@@ -36,7 +36,7 @@
         <p><strong>Category</strong>: <a href="{% url 'categories:detail' book.category.pk %}"
             class="hover:underline">{{ book.category }}</a></p>
         <div>
-          <p class="font-bold">Writer</p>
+          <p class="font-bold">{% trans "Writer" %}</p>
           {% include "mixins/person.html" with person=book.writer circle=True %}
         </div>
       </div>
@@ -50,7 +50,7 @@
       <h4 class="text-lg font-bold border-b pb-4 mb-2">{{ review.created_by }} (Rating: {{ review.rating }}) -
         {{ review.created_at }} {% if review.created_by == request.user %}
         <a href="{% url 'reviews:delete' review.pk %}?next={{ request.path }}"
-          class="bg-red-200 rounded-lg text-red-700 hover:bg-red-700 hover:text-white transition duration-300 p-2">DELETE</a>
+          class="bg-red-200 rounded-lg text-red-700 hover:bg-red-700 hover:text-white transition duration-300 p-2">{% trans "DELETE" %}</a>
         {% endif %}
       </h4>
       <p class="text-sm">{{ review.text }}</p>
