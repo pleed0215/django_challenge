@@ -1,6 +1,6 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
-{{ LANGUAGE_CODE }}
+
 <div class="w-full h-20 border-b absolute inset-0 flex items-center justify-start box-border">
   <a class="w-1/12 h-full ml-10" href="{% url 'core:home' %}">
     <div class="w-full h-full flex items-center justify-center transition duration-150 hover:bg-gray-700 hover:text-white {% if 'Home' in page_title %}border-b-2 border-teal-500{% endif %}">
