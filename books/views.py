@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.core.paginator import Paginator
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.contrib.messages.views import SuccessMessageMixin
 
 from core.mixins import LoginOnlyView
 from .models import Book
@@ -30,8 +31,9 @@ class BookDetailView(DetailView):
     context['page_title'] = f"Book: {self.get_object().title}"
     return context
 
-class BookCreateView(LoginOnlyView, CreateView):
+class BookCreateView(LoginOnlyView, SuccessMessageMixin, CreateView):
   model = Book
+  success_message = "Book data is successfully made"
   success_url = reverse_lazy("books:books")
   template_name = "create_model.html"
   fields=[
@@ -46,9 +48,10 @@ class BookCreateView(LoginOnlyView, CreateView):
     "page_title": "Add Book",
   }
 
-class BookUpdateView(LoginOnlyView, UpdateView):
+class BookUpdateView(LoginOnlyView, SuccessMessageMixin, UpdateView):
   model = Book
   success_url = reverse_lazy("books:books")
+  success_message = "Book data is successfully updated"
   template_name = "create_model.html"
   fields=[
     "title",

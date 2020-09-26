@@ -1,10 +1,10 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 
 {% block content %}
 <div class="flex flex-col items-center w-3/4">
-<a class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center" href="{% url 'movies:create' %}">Create a movie</a>
-<h1 class="text-2xl">Welcome to movies</h1>
+<a class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center" href="{% url 'movies:create' %}">{% trans "Create a movie" %}</a>
+<h1 class="text-2xl">{% trans "Welcome to movies" %}</h1>
   <div class="m-4 grid grid-cols-5 gap-4">
 {% for movie in movies %}
       {% include "mixins/movie.html" with movie=movie %}

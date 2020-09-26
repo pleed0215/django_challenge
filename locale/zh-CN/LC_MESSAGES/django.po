@@ -1,0 +1,161 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-26 16:44+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: core/mixins.py:14
+msgid "Nope, you don't need to go there."
+msgstr "不能去那里"
+
+#: core/mixins.py:21
+msgid "You need to login"
+msgstr "你需要登入"
+
+#: templates/books/book_detail.html:9 templates/movies/movie_detail.html:10
+#: templates/people/person_detail.html:6
+msgid "Update"
+msgstr "更新"
+
+#: templates/books/book_detail.html:16 templates/movies/movie_detail.html:16
+msgid "Review"
+msgstr "检阅"
+
+#: templates/books/book_detail.html:18 templates/movies/movie_detail.html:18
+msgid "Reviewed"
+msgstr "已作检讨"
+
+#: templates/books/book_detail.html:40
+msgid "Writer"
+msgstr "作家"
+
+#: templates/books/book_detail.html:54
+msgid "DELETE"
+msgstr "删除"
+
+#: templates/books/books.html:6
+msgid "Create a book"
+msgstr "创书"
+
+#: templates/books/books.html:7
+msgid "Welcome to books"
+msgstr "欢迎入书"
+
+#: templates/genres/genre_detail.html:6
+msgid "Genre"
+msgstr "体裁"
+
+#: templates/genres/genre_detail.html:15
+msgid "No books founded in this genre."
+msgstr "没有这种类型的书。"
+
+#: templates/genres/genre_detail.html:25
+msgid "No movies founded in this genre."
+msgstr "没有这种类型的电影。"
+
+#: templates/genres/genres.html:5
+msgid "Choose a genre you wanna see!"
+msgstr "选择一种你想看的类型"
+
+#: templates/mixins/book.html:18 templates/mixins/movie.html:17
+#: templates/movies/movie_detail.html:24
+msgid "Remove from favorites"
+msgstr "从偏心眼上移开"
+
+#: templates/mixins/book.html:21 templates/mixins/movie.html:21
+#: templates/movies/movie_detail.html:27
+msgid "Add to favorites"
+msgstr "添宠加宠"
+
+#: templates/movies/movie_detail.html:39
+msgid "Rating"
+msgstr "评分"
+
+#: templates/movies/movie_detail.html:40
+msgid "Category"
+msgstr "类别"
+
+#: templates/movies/movie_detail.html:43
+msgid "Director"
+msgstr "导演"
+
+#: templates/movies/movie_detail.html:47
+msgid "Casts"
+msgstr "角色"
+
+#: templates/movies/movies.html:6
+msgid "Create a movie"
+msgstr "电影资料制作"
+
+#: templates/movies/movies.html:7
+msgid "Welcome to movies"
+msgstr "欢迎看电影"
+
+#: templates/partials/header.html:7
+msgid "Home"
+msgstr "Home"
+
+#: templates/partials/header.html:12
+msgid "Movies"
+msgstr "电影"
+
+#: templates/partials/header.html:17
+msgid "Books"
+msgstr "图书"
+
+#: templates/partials/header.html:22
+msgid "Genres"
+msgstr "体裁"
+
+#: templates/partials/header.html:27
+msgid "People"
+msgstr "People"
+
+#: templates/partials/header.html:48
+msgid "Log out"
+msgstr "登出"
+
+#: templates/partials/header.html:49
+msgid "Profile"
+msgstr "侧影"
+
+#: templates/partials/header.html:52
+msgid "Log in"
+msgstr "登录"
+
+#: templates/partials/header.html:53
+msgid "Sign up"
+msgstr "注册会员"
+
+#: templates/people/people.html:6
+msgid "Create a Person"
+msgstr "造人"
+
+#: templates/people/people.html:7
+msgid "Welcome to people"
+msgstr "欢迎浏览网页"
+
+#: templates/people/person_detail.html:10
+msgid "Name"
+msgstr "名字"
+
+#: templates/people/person_detail.html:12
+msgid "Kind"
+msgstr "种类"
+
+#: templates/users/login.html:20
+msgid "Login"
+msgstr "登录"

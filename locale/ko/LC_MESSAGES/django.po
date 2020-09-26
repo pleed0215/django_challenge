@@ -1,0 +1,162 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-09-26 14:50+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: core/mixins.py:14
+msgid "Nope, you don't need to go there."
+msgstr ""
+
+#: core/mixins.py:21
+msgid "You need to login"
+msgstr "로그인이 필요합니다."
+
+#: templates/books/book_detail.html:8 templates/movies/movie_detail.html:9
+#: templates/people/person_detail.html:6
+msgid "Update"
+msgstr "수정"
+
+#: templates/books/book_detail.html:15 templates/movies/movie_detail.html:15
+msgid "Review"
+msgstr "리뷰 남기기"
+
+#: templates/books/book_detail.html:17 templates/movies/movie_detail.html:17
+msgid "Reviewed"
+msgstr "리뷰 작성 완료"
+
+#: templates/books/book_detail.html:39
+msgid "Writer"
+msgstr "작가"
+
+#: templates/books/book_detail.html:53
+msgid "DELETE"
+msgstr "삭제"
+
+#: templates/books/books.html:6
+msgid "Create a book"
+msgstr "도서 추가하기"
+
+#: templates/books/books.html:7
+msgid "Welcome to books"
+msgstr "도서 목록"
+
+#: templates/genres/genre_detail.html:6
+msgid "Genre"
+msgstr "장르"
+
+#: templates/genres/genre_detail.html:15
+msgid "No books founded in this genre."
+msgstr "선택하신 장르에는 책이 없습니다."
+
+#: templates/genres/genre_detail.html:25
+msgid "No movies founded in this genre."
+msgstr "선택하신 장르에는 영화자료가 없습니다."
+
+#: templates/genres/genres.html:5
+msgid "Choose a genre you wanna see!"
+msgstr "장르를 선택하십시오."
+
+#: templates/mixins/book.html:17 templates/mixins/movie.html:16
+#: templates/movies/movie_detail.html:23
+msgid "Remove from favorites"
+msgstr "즐겨찾기에서 제거"
+
+#: templates/mixins/book.html:20 templates/mixins/movie.html:20
+#: templates/movies/movie_detail.html:26
+msgid "Add to favorites"
+msgstr "즐겨찾기에 추가"
+
+#: templates/movies/movie_detail.html:38
+msgid "Rating"
+msgstr "평점"
+
+#: templates/movies/movie_detail.html:39
+msgid "Category"
+msgstr "카테고리"
+
+#: templates/movies/movie_detail.html:42
+msgid "Director"
+msgstr "감독"
+
+#: templates/movies/movie_detail.html:46
+msgid "Casts"
+msgstr "캐스팅"
+
+#: templates/movies/movies.html:6
+msgid "Create a movie"
+msgstr "영화 자료 추가"
+
+#: templates/movies/movies.html:7
+msgid "Welcome to movies"
+msgstr "영화자료 목록"
+
+#: templates/partials/header.html:4
+msgid "Home"
+msgstr "홈"
+
+#: templates/partials/header.html:9
+msgid "Movies"
+msgstr "영화"
+
+#: templates/partials/header.html:14
+msgid "Books"
+msgstr "도서"
+
+#: templates/partials/header.html:19
+msgid "Genres"
+msgstr "장르"
+
+#: templates/partials/header.html:24
+msgid "People"
+msgstr "피플"
+
+#: templates/partials/header.html:37
+msgid "Log out"
+msgstr "로그아웃"
+
+#: templates/partials/header.html:38
+msgid "Profile"
+msgstr "프로필"
+
+#: templates/partials/header.html:41
+msgid "Log in"
+msgstr "로그인"
+
+#: templates/partials/header.html:42
+msgid "Sign up"
+msgstr "회원 가입"
+
+#: templates/people/people.html:6
+msgid "Create a Person"
+msgstr "피플 만들기"
+
+#: templates/people/people.html:7
+msgid "Welcome to people"
+msgstr "피플 목록"
+
+#: templates/people/person_detail.html:10
+msgid "Name"
+msgstr "이름"
+
+#: templates/people/person_detail.html:12
+msgid "Kind"
+msgstr "직업"
+
+#: templates/users/login.html:20
+msgid "Login"
+msgstr "로그인"

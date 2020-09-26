@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
@@ -28,9 +29,10 @@ class PersonDetailView(DetailView):
     context['page_title'] = f"Person: {self.get_object().name}"
     return context
 
-class PersonCreateView(LoginOnlyView, CreateView):
+class PersonCreateView(LoginOnlyView, SuccessMessageMixin, CreateView):
   model = Person
   success_url = reverse_lazy("people:people")
+  success_message = "Person data is successfully made."
   template_name = "create_model.html"
   fields=[
     "name",
@@ -41,10 +43,11 @@ class PersonCreateView(LoginOnlyView, CreateView):
     "page_title": "Add Person",
   }
 
-class PersonUpdateView(LoginOnlyView, UpdateView):
+class PersonUpdateView(LoginOnlyView, SuccessMessageMixin, UpdateView):
   model = Person
   success_url = reverse_lazy("books:books")
   template_name = "create_model.html"
+  success_message = "Person data is successfully updated."
   fields=[
     "name",
     "kind",

@@ -1,10 +1,10 @@
 {% extends "base.html" %}
-
+{% load i18n %}
 
 {% block content %}
 <div class="w-3/4 flex flex-col items-center">
-  <a class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center" href="{% url 'books:create' %}">Create a book</a>
-  <h1 class="text-2xl">Welcome to books</h1>
+  <a class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center" href="{% url 'books:create' %}">{% trans "Create a book" %}</a>
+  <h1 class="text-2xl">{% trans "Welcome to books" %}</h1>
     <div class="m-4 grid grid-cols-5">
   {% for book in books %}
     {% include "mixins/book.html" with book=book %}

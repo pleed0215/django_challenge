@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +17,43 @@
       width: 90%;
 
     }
+    .success {
+      background-color: #81e5d8;
+      color: #2f7b7c;
+    }
+    
+    .error {
+      background-color: #f39696;
+      color: #ca3b3a;
+    }
+
+    .info {
+      background-color: #faef88;
+      color: #cb9d3f;
+    }
+
+    @keyframes message-fade {
+      0% {
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .fade {
+      animation: message-fade 4s linear forwards;
+    }
+
   </style>
 </head>
 
@@ -22,12 +61,22 @@
   <header class="w-full h-20">
     {% include "partials/header.html" %}
   </header>
-  <main class="w-full h-auto mt-4 flex flex-col items-center">
+  {% include "mixins/message.html" %}
+  <main class="w-full h-auto min-h-screen mt-4 flex flex-col items-center">
     {% block content %}
     {% endblock content %}
   </main>
-  <footer class="mt-4">
+  <footer class="mt-4 h-20 flex flex-col justify-center items-center">
     {% include "partials/footer.html" %}
   </footer>
   <script src="https://kit.fontawesome.com/3e52747b95.js" crossorigin="anonymous"></script>
+  <script>
+    const langSelect = document.getElementById("lang-select");
+    
+    const onChange = () => {
+      fetch (`{% url 'users:switch_lang' %}?lang=${langSelect.value}`).then ( () => window.location.reload() );
+    }
+
+    langSelect.addEventListener("change", onChange);
+  </script>
 </body>
