@@ -1,76 +1,59 @@
-{% extends "base.html" %} {% load is_reviewed %} {% load is_in_fav %} {% block
-content %}
+{% extends "base.html" %}
+{% load is_reviewed %}
+{% load is_in_fav %}
+
+
+{% block content %}
 <div class="flex flex-col w-1/2">
-  <a
-    href="{% url 'movies:update' movie.pk %}"
-    class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center"
-    >Update</a
-  >
-  {% if user.is_authenticated %} {% is_reviewed movie.pk True as reviewed %} {%
-  if not reviewed %}
-  <a
-    href="{% url 'reviews:create' movie.pk %}?type=movie&next={{ request.path }}"
-    class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center"
-    >Review</a
-  >
+  <a href="{% url 'movies:update' movie.pk %}"
+    class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center">Update</a>
+  {% if user.is_authenticated %}
+  {% is_reviewed movie.pk True as reviewed %}
+
+  {% if not reviewed %}
+  <a href="{% url 'reviews:create' movie.pk %}?type=movie&next={{ request.path }}"
+    class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center">Review</a>
   {% else %}
-  <p
-    class="border bg-gray-200 text-gray-400 p-2 mb-4 transition duration-300 rounded w-full text-center"
-  >
-    Reviewed
-  </p>
-  {% endif %} {% is_in_fav movie.pk True as is_in_fav_boolean %} {% if
-  is_in_fav_boolean %}
-  <a
-    href="{% url 'favs:toggle' movie.pk %}?type=movie&next={{request.get_full_path}}"
-    class="text-center w-full p-2 bg-red-300 text-red-700 hover:bg-red-700 hover:text-white transition duration-300 rounded"
-    >Remove from favorites</a
-  >
-  {% else %}
-  <a
-    href="{% url 'favs:toggle' movie.pk %}?type=movie&next={{request.get_full_path}}"
-    class="text-center w-full p-2 bg-yellow-300 text-yellow-700 hover:bg-yellow-700 hover:text-white transition duration-300 rounded"
-    >Add to favorites</a
-  >
-  {% endif %} {% endif %}
+  <p class="border bg-gray-200 text-gray-400 p-2 mb-4 transition duration-300 rounded w-full text-center">Reviewed</p>
+    {% endif %}
+
+    {% is_in_fav movie.pk True as is_in_fav_boolean %}
+    {% if is_in_fav_boolean %}
+    <a href="{% url 'favs:toggle' movie.pk %}?type=movie&next={{request.get_full_path}}"
+      class="text-center w-full p-2 bg-red-300 text-red-700 hover:bg-red-700 hover:text-white transition duration-300 rounded">Remove
+      from favorites</a>
+    {% else %}
+    <a href="{% url 'favs:toggle' movie.pk %}?type=movie&next={{request.get_full_path}}"
+      class="text-center w-full p-2 bg-yellow-300 text-yellow-700 hover:bg-yellow-700 hover:text-white transition duration-300 rounded">Add
+      to favorites</a>
+    {% endif %}
+    {% endif %}
   <div class="flex flex-col justify-start items-start h-auto">
     <h1 class="text-3xl font-bold">{{ movie.title }}({{ movie.year }})</h1>
     <div class="flex mt-2">
       <div class="flex items-start justify-center">
         <div class="self-start">
-          {% include "mixins/cover.html" with cover_url=movie.cover_image.url
-          width=300 height=450 %}
+          {% include "mixins/cover.html" with cover_url=movie.cover_image.url width=300 height=450 %}
         </div>
       </div>
       <div class="ml-4 flex flex-col text-xl">
         <p><strong>Rating</strong>: {{ movie.rating }}</p>
-        <p>
-          <strong>Category</strong>:
-          <a
-            href="{% url 'categories:detail' movie.category.pk %}"
-            class="hover:underline"
-            >{{ movie.category }}</a
-          >
-        </p>
+        <p><strong>Category</strong>: <a href="{% url 'categories:detail' movie.category.pk %}"
+            class="hover:underline">{{ movie.category }}</a></p>
         <div>
           <p><strong>Director</strong></p>
-          {% include "mixins/person.html" with person=movie.director circle=True
-          %}
+          {% include "mixins/person.html" with person=movie.director circle=True %}
         </div>
         <div>
           <h3 class="text-xl text-center font-bold">&lt;&lt;Casts&gt;&gt;</h3>
           <div class="grid grid-cols-4 gap-4">
             {% for cast in movie.cast.all %}
-            <div
-              class="flex flex-col items-center hover:bg-gray-300 transition duration-300 p-3"
-            >
-              <a
-                class="text-blue-400 flex flex-col items-center"
-                href="{% url 'people:detail' cast.pk %}"
-              >
-                {% include "mixins/cover.html" with cover_url=cast.photo.url
-                width=100 height=150 circle=True %}
-                <h4 class="text-sm text-center">{{ cast.name }}</h4>
+            <div class="flex flex-col items-center hover:bg-gray-300 transition duration-300 p-3">
+              <a class="text-blue-400 flex flex-col items-center" href="{% url 'people:detail' cast.pk %}">
+                {% include "mixins/cover.html" with cover_url=cast.photo.url width=100 height=150 circle=True %}
+                <h4 class="text-sm text-center">
+                  {{ cast.name }}
+                </h4>
               </a>
             </div>
             {% endfor %}
@@ -80,23 +63,18 @@ content %}
     </div>
   </div>
   <div class="flex flex-col w-full h-auto">
-    <h3 class="text-xl font-bold mb-5">
-      Review{{ movie.reviews.count|pluralize }}({{movie.reviews.count }}
-      review{{ movie.reviews.count|pluralize }})
-    </h3>
+    <h3 class="text-xl font-bold mb-5">Review{{ movie.reviews.count|pluralize }}({{movie.reviews.count }}
+      review{{ movie.reviews.count|pluralize }})</h3>
     {% for review in movie.reviews.all|dictsortreversed:"created_at" %}
     <div class="flex flex-col w-full mb-4 border p-4 rounded-lg">
-      <h4 class="text-lg font-bold border-b pb-4 mb-2">
-        {{ review.created_by }} (Rating: {{ review.rating }}) - {{
-        review.created_at }} {% if review.created_by == request.user %}
-        <a
-          href="{% url 'reviews:delete' review.pk %}?next={{ request.path }}"
-          class="bg-red-200 rounded-lg text-red-700 hover:bg-red-700 hover:text-white transition duration-300 p-2"
-          >DELETE</a
-        >
+      <h4 class="text-lg font-bold border-b pb-4 mb-2">{{ review.created_by }} (Rating: {{ review.rating }}) -
+        {{ review.created_at }} {% if review.created_by == request.user %}
+        <a href="{% url 'reviews:delete' review.pk %}?next={{ request.path }}"
+          class="bg-red-200 rounded-lg text-red-700 hover:bg-red-700 hover:text-white transition duration-300 p-2">DELETE</a>
         {% endif %}
       </h4>
       <p class="text-sm">{{ review.text }}</p>
+
     </div>
     {% endfor %}
   </div>

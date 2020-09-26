@@ -1,56 +1,40 @@
-{% extends "base.html" %} {% load is_reviewed %} {% load is_in_fav %} {% block
-content %}
-<div class="flex flex-col w-1/2">
-  <a
-    href="{% url 'books:update' book.pk %}"
-    class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center"
-    >Update</a
-  >
+{% extends "base.html" %}
+{% load is_reviewed %}
+{% load is_in_fav %}
 
-  {% if user.is_authenticated %} {% is_reviewed book.pk False as reviewed %} {%
-  if not reviewed %}
-  <a
-    href="{% url 'reviews:create' book.pk %}?type=book&next={{ request.path }}"
-    class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center"
-    >Review</a
-  >
+{% block content %}
+<div class="flex flex-col w-1/2">
+  <a href="{% url 'books:update' book.pk %}"
+    class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center">Update</a>
+
+  {% if user.is_authenticated %}
+  {% is_reviewed book.pk False as reviewed %}
+
+  {% if not reviewed %}
+  <a href="{% url 'reviews:create' book.pk %}?type=book&next={{ request.path }}"
+    class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded w-full text-center">Review</a>
   {% else %}
-  <p
-    class="border bg-gray-200 text-gray-400 p-2 mb-4 transition duration-300 rounded w-full text-center"
-  >
-    Reviewed
-  </p>
-  {% endif %} {% is_in_fav book.pk False as is_in_fav_boolean %} {% if
-  is_in_fav_boolean %}
-  <a
-    href="{% url 'favs:toggle' book.pk %}?type=book&next={{request.get_full_path}}"
-    class="text-center w-full p-2 bg-red-300 text-red-700 hover:bg-red-700 hover:text-white transition duration-300 rounded"
-    >Remove from favorites</a
-  >
-  {% else %}
-  <a
-    href="{% url 'favs:toggle' book.pk %}?type=book&next={{request.get_full_path}}"
-    class="text-center w-full p-2 bg-yellow-300 text-yellow-700 hover:bg-yellow-700 hover:text-white transition duration-300 rounded"
-    >Add to favorites</a
-  >
-  {% endif %} {% endif %}
-  <div
-    class="flex flex-col justify-start items-start h-auto border-b pb-5 mb-5"
-  >
+  <p class="border bg-gray-200 text-gray-400 p-2 mb-4 transition duration-300 rounded w-full text-center">Reviewed</p>
+    {% endif %}
+    {% is_in_fav book.pk False as is_in_fav_boolean %}
+    {% if is_in_fav_boolean %}
+    <a href="{% url 'favs:toggle' book.pk %}?type=book&next={{request.get_full_path}}"
+      class="text-center w-full p-2 bg-red-300 text-red-700 hover:bg-red-700 hover:text-white transition duration-300 rounded">Remove
+      from favorites</a>
+    {% else %}
+    <a href="{% url 'favs:toggle' book.pk %}?type=book&next={{request.get_full_path}}"
+      class="text-center w-full p-2 bg-yellow-300 text-yellow-700 hover:bg-yellow-700 hover:text-white transition duration-300 rounded">Add
+      to favorites</a>
+    {% endif %}
+    {% endif %}
+  <div class="flex flex-col justify-start items-start h-auto border-b pb-5 mb-5">
     <h1 class="text-3xl font-bold">{{ book.title }}({{ book.year }})</h1>
     <div class="flex mt-2">
-      {% include "mixins/cover.html" with cover_url=book.cover_image.url
-      width=300 height=450 %}
+      {% include "mixins/cover.html" with cover_url=book.cover_image.url width=300 height=450 %}
       <div class="ml-4 flex flex-col text-xl">
         <p><strong>Rating</strong>: {{ book.rating }}</p>
-        <p>
-          <strong>Category</strong>:
-          <a
-            href="{% url 'categories:detail' book.category.pk %}"
-            class="hover:underline"
-            >{{ book.category }}</a
-          >
-        </p>
+        <p><strong>Category</strong>: <a href="{% url 'categories:detail' book.category.pk %}"
+            class="hover:underline">{{ book.category }}</a></p>
         <div>
           <p class="font-bold">Writer</p>
           {% include "mixins/person.html" with person=book.writer circle=True %}
@@ -59,23 +43,18 @@ content %}
     </div>
   </div>
   <div class="flex flex-col w-full h-auto">
-    <h3 class="text-xl font-bold mb-5">
-      Review{{ book.reviews.count|pluralize }}({{book.reviews.count }} review{{
-      book.reviews.count|pluralize }})
-    </h3>
+    <h3 class="text-xl font-bold mb-5">Review{{ book.reviews.count|pluralize }}({{book.reviews.count }}
+      review{{ book.reviews.count|pluralize }})</h3>
     {% for review in book.reviews.all|dictsortreversed:"created_at" %}
     <div class="flex flex-col w-full mb-4 border p-4 rounded-lg">
-      <h4 class="text-lg font-bold border-b pb-4 mb-2">
-        {{ review.created_by }} (Rating: {{ review.rating }}) - {{
-        review.created_at }} {% if review.created_by == request.user %}
-        <a
-          href="{% url 'reviews:delete' review.pk %}?next={{ request.path }}"
-          class="bg-red-200 rounded-lg text-red-700 hover:bg-red-700 hover:text-white transition duration-300 p-2"
-          >DELETE</a
-        >
+      <h4 class="text-lg font-bold border-b pb-4 mb-2">{{ review.created_by }} (Rating: {{ review.rating }}) -
+        {{ review.created_at }} {% if review.created_by == request.user %}
+        <a href="{% url 'reviews:delete' review.pk %}?next={{ request.path }}"
+          class="bg-red-200 rounded-lg text-red-700 hover:bg-red-700 hover:text-white transition duration-300 p-2">DELETE</a>
         {% endif %}
       </h4>
       <p class="text-sm">{{ review.text }}</p>
+
     </div>
     {% endfor %}
   </div>
