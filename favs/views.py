@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.http import Http404
 
 from movies.models import Movie
@@ -32,12 +33,16 @@ def toggle_fav(request, pk):
       if is_movie:
         if obj in fav_list.movies.all():
           fav_list.movies.remove(obj)
+          messages.add_message(request, messages.INFO, f"The movie was removed from favorite list")
         else:
           fav_list.movies.add(obj)
+          messages.add_message(request, messages.INFO, f"The movie was added to favorite list")
       else:
         if obj in fav_list.books.all():
           fav_list.books.remove(obj)
+          messages.add_message(request, messages.INFO, f"The book was removed from favorite list")
         else:
+          messages.add_message(request, messages.INFO, f"The book was added to favorite list")
           fav_list.books.add(obj)
 
     if next_url is not None:

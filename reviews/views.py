@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 
@@ -10,7 +12,7 @@ from books.models import Book
 from movies.models import Movie
 
 # Create your views here.
-class ReviewCreateView(LoginOnlyView, CreateView):
+class ReviewCreateView(LoginOnlyView, SuccessMessageMixin, CreateView):
     model = Review
     extra_context = {
         "page_title": "Reviewing",
@@ -19,6 +21,7 @@ class ReviewCreateView(LoginOnlyView, CreateView):
     template_name = "reviews/create_review.html"
     review_type = None
     obj_pk = None
+    success_message = "Review created."
 
     def get_initial(self):
         super().get_initial()
@@ -58,6 +61,8 @@ def delete_review(request, pk):
         
         if review.created_by == request.user:
             review.delete()
+
+        messages.add_message(request, messages.SUCCESS, "Review is deleted")
         if next_url is not None:
             return redirect(next_url)
         else:

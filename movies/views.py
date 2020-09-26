@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.contrib.messages.views import SuccessMessageMixin
 
 from core.mixins import LoginOnlyView
 from .models import Movie
@@ -29,9 +30,10 @@ class MovieDetailView(DetailView):
     context['page_title'] = f"Movie: {self.get_object().title}"
     return context
 
-class MovieCreateView(LoginOnlyView, CreateView):
+class MovieCreateView(LoginOnlyView, SuccessMessageMixin, CreateView):
   model = Movie
   success_url = reverse_lazy("movies:movies")
+  success_message = "Movie data is successfully made."
   template_name = "create_model.html"
   fields=[
     "title",
@@ -46,9 +48,10 @@ class MovieCreateView(LoginOnlyView, CreateView):
     "page_title": "Add Movie",
   }
 
-class MovieUpdateView(LoginOnlyView, UpdateView):
+class MovieUpdateView(LoginOnlyView, SuccessMessageMixin, UpdateView):
   model = Movie
   success_url = reverse_lazy("movies:movies")
+  success_message = "Movie data is successfully updated."
   template_name = "create_model.html"
   fields=[
     "title",

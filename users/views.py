@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import FormView, DetailView, UpdateView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
 from django.contrib.auth import (
     authenticate,
     login,
@@ -8,6 +10,7 @@ from django.contrib.auth import (
     views as auth_views,
     forms as auth_forms,
 )
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.utils import translation
 from django.conf import settings
@@ -18,12 +21,14 @@ from .models import User
 
 
 # Create your views here.
-class LoginView(LoggedOutOnlyView, auth_views.LoginView):
+class LoginView(LoggedOutOnlyView, SuccessMessageMixin, auth_views.LoginView):
     template_name = "users/login.html"
     form_class = forms.LoginForm
     extra_context = {
       "page_title": "Log in"
     }
+    success_message = "Login success"
+
 
     def form_valid(self, form):
       username = form.cleaned_data.get("username")
@@ -44,10 +49,11 @@ class LoginView(LoggedOutOnlyView, auth_views.LoginView):
         else:
             return reverse("core:home")
 
-class SignupView(LoggedOutOnlyView, FormView):
+class SignupView(LoggedOutOnlyView, SuccessMessageMixin, FormView):
     template_name = "users/signup.html"
     form_class = forms.SignupForm
     success_url = reverse_lazy("core:home")
+    success_message = "Congratulation! Welcome!"
 
     def form_valid(self, form):
       username = form.cleaned_data.get("username")
@@ -60,7 +66,9 @@ class SignupView(LoggedOutOnlyView, FormView):
       return redirect(self.get_success_url())
 
 
+@login_required
 def logout_view(request):
+    messages.add_message(request, messages.SUCCESS, f"Byebye, {request.user}")
     logout(request)
     return redirect(reverse("core:home"))
 
@@ -83,7 +91,7 @@ class UserDetailView(LoginOnlyView, DetailView):
   template_name = "users/profile.html"
 
 
-class UpdateProfileView(LoginOnlyView, UpdateView):
+class UpdateProfileView(LoginOnlyView, SuccessMessageMixin, UpdateView):
 
   model = User
   fields = (
@@ -94,6 +102,7 @@ class UpdateProfileView(LoginOnlyView, UpdateView):
     "fav_book_cat",
     "fav_movie_cat",
   )
+  success_message = "Successfully updated your profile."
   def get_object(self, queryset=None):
     return self.request.user
 
@@ -101,9 +110,10 @@ class UpdateProfileView(LoginOnlyView, UpdateView):
 
   success_url = reverse_lazy("users:profile")
 
-class UpdatePasswordView(LoginOnlyView, auth_views.PasswordChangeView):
+class UpdatePasswordView(LoginOnlyView, SuccessMessageMixin, auth_views.PasswordChangeView):
   template_name = "users/edit_password.html"
   success_url = reverse_lazy("users:update")
+  success_message = "Password changed successfully"
 
 
 def switch_language(request):
