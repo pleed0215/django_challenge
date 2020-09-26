@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-26 14:50+0900\n"
+"POT-Creation-Date: 2020-09-27 07:32+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,32 +18,94 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: books/views.py:38
+msgid "Book data is successfully made"
+msgstr "자료가 만들어졌습니다."
+
+#: books/views.py:57
+msgid "Book data is successfully updated"
+msgstr "자료가 수정되었습니다."
+
 #: core/mixins.py:14
 msgid "Nope, you don't need to go there."
-msgstr ""
+msgstr "잘못된 접근입니다."
 
 #: core/mixins.py:21
 msgid "You need to login"
 msgstr "로그인이 필요합니다."
 
-#: templates/books/book_detail.html:8 templates/movies/movie_detail.html:9
+#: favs/views.py:40
+#| msgid "Remove from favorites"
+msgid "The movie was removed from favorite list"
+msgstr "즐겨찾기에서 제거되었습니다."
+
+#: favs/views.py:47
+msgid "The movie was added to favorite list"
+msgstr "즐겨찾기에 추가 되었습니다."
+
+#: favs/views.py:55
+#| msgid "Remove from favorites"
+msgid "The book was removed from favorite list"
+msgstr "즐겨찾기에서 제거 되었습니다."
+
+#: favs/views.py:61
+msgid "The book was added to favorite list"
+msgstr "즐겨찾기에 추가 되었습니다."
+
+#: movies/views.py:36
+msgid "Movie data is successfully made."
+msgstr "자료가 만들어졌습니다"
+
+#: movies/views.py:55
+msgid "Movie data is successfully updated."
+msgstr "자료가 수정되었습니다."
+
+#: people/views.py:36
+msgid "Person data is successfully made."
+msgstr "자료가 만들어졌습니다."
+
+#: people/views.py:52
+msgid "Person data is successfully updated."
+msgstr "자료가 수정되었습니다."
+
+#: reviews/views.py:28
+#| msgid "Reviewed"
+msgid "Review created."
+msgstr "리뷰 작성 완료"
+
+#: reviews/views.py:69
+#| msgid "Reviewed"
+msgid "Review is deleted"
+msgstr "리뷰가 삭제 되었습니다."
+
+#: templates/books/book_detail.html:9 templates/movies/movie_detail.html:10
 #: templates/people/person_detail.html:6
 msgid "Update"
 msgstr "수정"
 
-#: templates/books/book_detail.html:15 templates/movies/movie_detail.html:15
+#: templates/books/book_detail.html:16 templates/movies/movie_detail.html:16
 msgid "Review"
 msgstr "리뷰 남기기"
 
-#: templates/books/book_detail.html:17 templates/movies/movie_detail.html:17
+#: templates/books/book_detail.html:18 templates/movies/movie_detail.html:18
 msgid "Reviewed"
 msgstr "리뷰 작성 완료"
 
-#: templates/books/book_detail.html:39
+#: templates/books/book_detail.html:23 templates/mixins/book.html:18
+#: templates/mixins/movie.html:17 templates/movies/movie_detail.html:24
+msgid "Remove from favorites"
+msgstr "즐겨찾기에서 제거"
+
+#: templates/books/book_detail.html:26 templates/mixins/book.html:21
+#: templates/mixins/movie.html:21 templates/movies/movie_detail.html:27
+msgid "Add to favorites"
+msgstr "즐겨찾기에 추가"
+
+#: templates/books/book_detail.html:38
 msgid "Writer"
 msgstr "작가"
 
-#: templates/books/book_detail.html:53
+#: templates/books/book_detail.html:52
 msgid "DELETE"
 msgstr "삭제"
 
@@ -71,29 +133,47 @@ msgstr "선택하신 장르에는 영화자료가 없습니다."
 msgid "Choose a genre you wanna see!"
 msgstr "장르를 선택하십시오."
 
-#: templates/mixins/book.html:17 templates/mixins/movie.html:16
-#: templates/movies/movie_detail.html:23
-msgid "Remove from favorites"
-msgstr "즐겨찾기에서 제거"
+#: templates/home.html:7
+msgid "Latest movies"
+msgstr "최신 영화 자료"
 
-#: templates/mixins/book.html:20 templates/mixins/movie.html:20
-#: templates/movies/movie_detail.html:26
-msgid "Add to favorites"
+#: templates/home.html:7 templates/home.html:15 templates/home.html:23
+msgid "See all"
+msgstr "전체 보기"
+
+#: templates/home.html:7
+msgid "Add movie"
 msgstr "즐겨찾기에 추가"
 
-#: templates/movies/movie_detail.html:38
+#: templates/home.html:15
+msgid "Latest Books"
+msgstr "최신 도서 자료"
+
+#: templates/home.html:15
+msgid "Add book"
+msgstr "도서 자료 추가"
+
+#: templates/home.html:23
+msgid "Latest people"
+msgstr "최신 피플 목록"
+
+#: templates/home.html:23
+msgid "Add person"
+msgstr "피플 추가"
+
+#: templates/movies/movie_detail.html:39
 msgid "Rating"
 msgstr "평점"
 
-#: templates/movies/movie_detail.html:39
+#: templates/movies/movie_detail.html:40
 msgid "Category"
 msgstr "카테고리"
 
-#: templates/movies/movie_detail.html:42
+#: templates/movies/movie_detail.html:43
 msgid "Director"
 msgstr "감독"
 
-#: templates/movies/movie_detail.html:46
+#: templates/movies/movie_detail.html:47
 msgid "Casts"
 msgstr "캐스팅"
 
@@ -105,39 +185,39 @@ msgstr "영화 자료 추가"
 msgid "Welcome to movies"
 msgstr "영화자료 목록"
 
-#: templates/partials/header.html:4
+#: templates/partials/header.html:7
 msgid "Home"
 msgstr "홈"
 
-#: templates/partials/header.html:9
+#: templates/partials/header.html:12
 msgid "Movies"
 msgstr "영화"
 
-#: templates/partials/header.html:14
+#: templates/partials/header.html:17
 msgid "Books"
 msgstr "도서"
 
-#: templates/partials/header.html:19
+#: templates/partials/header.html:22
 msgid "Genres"
 msgstr "장르"
 
-#: templates/partials/header.html:24
+#: templates/partials/header.html:27
 msgid "People"
 msgstr "피플"
 
-#: templates/partials/header.html:37
+#: templates/partials/header.html:48
 msgid "Log out"
 msgstr "로그아웃"
 
-#: templates/partials/header.html:38
+#: templates/partials/header.html:49
 msgid "Profile"
 msgstr "프로필"
 
-#: templates/partials/header.html:41
+#: templates/partials/header.html:52
 msgid "Log in"
 msgstr "로그인"
 
-#: templates/partials/header.html:42
+#: templates/partials/header.html:53
 msgid "Sign up"
 msgstr "회원 가입"
 
@@ -160,3 +240,19 @@ msgstr "직업"
 #: templates/users/login.html:20
 msgid "Login"
 msgstr "로그인"
+
+#: users/views.py:28
+msgid "Login success"
+msgstr "로그인 되었습니다."
+
+#: users/views.py:54
+msgid "Congratulation! Welcome!"
+msgstr "환영합니다."
+
+#: users/views.py:107
+msgid "Successfully updated your profile."
+msgstr "프로필이 수정 되었습니다."
+
+#: users/views.py:122
+msgid "Password changed successfully"
+msgstr "패스워드가 변경 되었습니다."

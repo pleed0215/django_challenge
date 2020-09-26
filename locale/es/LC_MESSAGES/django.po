@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-26 14:50+0900\n"
+"POT-Creation-Date: 2020-09-27 07:32+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,32 +18,94 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: books/views.py:38
+msgid "Book data is successfully made"
+msgstr "Los datos del libro se realizaron correctamente"
+
+#: books/views.py:57
+msgid "Book data is successfully updated"
+msgstr "Los datos del libro se actualizaron correctamente"
+
 #: core/mixins.py:14
 msgid "Nope, you don't need to go there."
-msgstr ""
+msgstr "Necesitas iniciar sesión"
 
 #: core/mixins.py:21
 msgid "You need to login"
 msgstr "Iniciar sesión."
 
-#: templates/books/book_detail.html:8 templates/movies/movie_detail.html:9
+#: favs/views.py:40
+#| msgid "Remove from favorites"
+msgid "The movie was removed from favorite list"
+msgstr "Eliminar de favoritos"
+
+#: favs/views.py:47
+msgid "The movie was added to favorite list"
+msgstr "La película se agregó a la lista de favoritos."
+
+#: favs/views.py:55
+#| msgid "Remove from favorites"
+msgid "The book was removed from favorite list"
+msgstr "Eliminar de favoritos"
+
+#: favs/views.py:61
+msgid "The book was added to favorite list"
+msgstr "El libro se agregó a la lista de favoritos."
+
+#: movies/views.py:36
+msgid "Movie data is successfully made."
+msgstr "Los datos de la película se crearon correctamente."
+
+#: movies/views.py:55
+msgid "Movie data is successfully updated."
+msgstr "Los datos de la película se actualizaron correctamente."
+
+#: people/views.py:36
+msgid "Person data is successfully made."
+msgstr "Los datos personales se han realizado correctamente."
+
+#: people/views.py:52
+msgid "Person data is successfully updated."
+msgstr "Los datos personales se actualizaron correctamente."
+
+#: reviews/views.py:28
+#| msgid "Reviewed"
+msgid "Review created."
+msgstr "Revisión creada"
+
+#: reviews/views.py:69
+#| msgid "Reviewed"
+msgid "Review is deleted"
+msgstr "Se borra la reseña"
+
+#: templates/books/book_detail.html:9 templates/movies/movie_detail.html:10
 #: templates/people/person_detail.html:6
 msgid "Update"
 msgstr "Renovar"
 
-#: templates/books/book_detail.html:15 templates/movies/movie_detail.html:15
+#: templates/books/book_detail.html:16 templates/movies/movie_detail.html:16
 msgid "Review"
 msgstr "Revista"
 
-#: templates/books/book_detail.html:17 templates/movies/movie_detail.html:17
+#: templates/books/book_detail.html:18 templates/movies/movie_detail.html:18
 msgid "Reviewed"
 msgstr "Revisado"
 
-#: templates/books/book_detail.html:39
+#: templates/books/book_detail.html:23 templates/mixins/book.html:18
+#: templates/mixins/movie.html:17 templates/movies/movie_detail.html:24
+msgid "Remove from favorites"
+msgstr "Eliminar de favoritos"
+
+#: templates/books/book_detail.html:26 templates/mixins/book.html:21
+#: templates/mixins/movie.html:21 templates/movies/movie_detail.html:27
+msgid "Add to favorites"
+msgstr "Agregar a favoritos"
+
+#: templates/books/book_detail.html:38
 msgid "Writer"
 msgstr "Autora"
 
-#: templates/books/book_detail.html:53
+#: templates/books/book_detail.html:52
 msgid "DELETE"
 msgstr "Eliminación"
 
@@ -65,35 +127,53 @@ msgstr "No hay ningún libro de este tipo."
 
 #: templates/genres/genre_detail.html:25
 msgid "No movies founded in this genre."
-msgstr ""
+msgstr "No hay películas fundadas en este género."
 
 #: templates/genres/genres.html:5
 msgid "Choose a genre you wanna see!"
 msgstr "No hay ninguna película de este tipo."
 
-#: templates/mixins/book.html:17 templates/mixins/movie.html:16
-#: templates/movies/movie_detail.html:23
-msgid "Remove from favorites"
-msgstr "Desecho"
+#: templates/home.html:7
+msgid "Latest movies"
+msgstr "la última película"
 
-#: templates/mixins/book.html:20 templates/mixins/movie.html:20
-#: templates/movies/movie_detail.html:26
-msgid "Add to favorites"
-msgstr "Salsa"
+#: templates/home.html:7 templates/home.html:15 templates/home.html:23
+msgid "See all"
+msgstr "Ver todo"
 
-#: templates/movies/movie_detail.html:38
+#: templates/home.html:7
+msgid "Add movie"
+msgstr "Agregar película"
+
+#: templates/home.html:15
+msgid "Latest Books"
+msgstr "Últimos libros"
+
+#: templates/home.html:15
+msgid "Add book"
+msgstr "Agregar libro"
+
+#: templates/home.html:23
+msgid "Latest people"
+msgstr "Saludo de bienvenida"
+
+#: templates/home.html:23
+msgid "Add person"
+msgstr "Agregar persona"
+
+#: templates/movies/movie_detail.html:39
 msgid "Rating"
 msgstr "Ranking"
 
-#: templates/movies/movie_detail.html:39
+#: templates/movies/movie_detail.html:40
 msgid "Category"
 msgstr "Clasificar"
 
-#: templates/movies/movie_detail.html:42
+#: templates/movies/movie_detail.html:43
 msgid "Director"
 msgstr "Superintendente"
 
-#: templates/movies/movie_detail.html:46
+#: templates/movies/movie_detail.html:47
 msgid "Casts"
 msgstr "Yeso"
 
@@ -105,39 +185,39 @@ msgstr "Vídeo"
 msgid "Welcome to movies"
 msgstr "Comienzo de una película"
 
-#: templates/partials/header.html:4
+#: templates/partials/header.html:7
 msgid "Home"
 msgstr "Ranura"
 
-#: templates/partials/header.html:9
+#: templates/partials/header.html:12
 msgid "Movies"
 msgstr "Película"
 
-#: templates/partials/header.html:14
+#: templates/partials/header.html:17
 msgid "Books"
 msgstr "Libro"
 
-#: templates/partials/header.html:19
+#: templates/partials/header.html:22
 msgid "Genres"
 msgstr "Género"
 
-#: templates/partials/header.html:24
+#: templates/partials/header.html:27
 msgid "People"
 msgstr "Persona"
 
-#: templates/partials/header.html:37
+#: templates/partials/header.html:48
 msgid "Log out"
 msgstr "desconectar"
 
-#: templates/partials/header.html:38
+#: templates/partials/header.html:49
 msgid "Profile"
 msgstr "Perfil"
 
-#: templates/partials/header.html:41
+#: templates/partials/header.html:52
 msgid "Log in"
 msgstr "Logaritmo"
 
-#: templates/partials/header.html:42
+#: templates/partials/header.html:53
 msgid "Sign up"
 msgstr "Registrar"
 
@@ -160,3 +240,19 @@ msgstr "Benigno"
 #: templates/users/login.html:20
 msgid "Login"
 msgstr "Logaritmo"
+
+#: users/views.py:28
+msgid "Login success"
+msgstr "Inicio de sesión exitoso"
+
+#: users/views.py:54
+msgid "Congratulation! Welcome!"
+msgstr "¡Felicidades! ¡Bienvenido!"
+
+#: users/views.py:107
+msgid "Successfully updated your profile."
+msgstr "Su perfil ha sido actualizado con éxito."
+
+#: users/views.py:122
+msgid "Password changed successfully"
+msgstr "Contraseña cambiada con éxito"

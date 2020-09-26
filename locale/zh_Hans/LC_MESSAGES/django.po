@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-26 22:56+0900\n"
+"POT-Creation-Date: 2020-09-27 07:33+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
+#: books/views.py:38
+msgid "Book data is successfully made"
+msgstr "图书数据成功制作"
+
+#: books/views.py:57
+msgid "Book data is successfully updated"
+msgstr "图书数据已成功更新"
+
 #: core/mixins.py:14
 msgid "Nope, you don't need to go there."
 msgstr "不能去那里"
@@ -25,6 +33,50 @@ msgstr "不能去那里"
 #: core/mixins.py:21
 msgid "You need to login"
 msgstr "你需要登入"
+
+#: favs/views.py:40
+#| msgid "Remove from favorites"
+msgid "The movie was removed from favorite list"
+msgstr "电影已从收藏夹列表中删除"
+
+#: favs/views.py:47
+msgid "The movie was added to favorite list"
+msgstr "电影已添加到收藏夹列表"
+
+#: favs/views.py:55
+#| msgid "Remove from favorites"
+msgid "The book was removed from favorite list"
+msgstr "这本书已从收藏夹清单中删除"
+
+#: favs/views.py:61
+msgid "The book was added to favorite list"
+msgstr "这本书已添加到收藏夹列表中"
+
+#: movies/views.py:36
+msgid "Movie data is successfully made."
+msgstr "电影数据已成功制作。"
+
+#: movies/views.py:55
+msgid "Movie data is successfully updated."
+msgstr "电影数据已成功更新。"
+
+#: people/views.py:36
+msgid "Person data is successfully made."
+msgstr "人员数据已成功创建。"
+
+#: people/views.py:52
+msgid "Person data is successfully updated."
+msgstr "人员数据已成功更新。"
+
+#: reviews/views.py:28
+#| msgid "Reviewed"
+msgid "Review created."
+msgstr "评论已创建。"
+
+#: reviews/views.py:69
+#| msgid "Reviewed"
+msgid "Review is deleted"
+msgstr "评论已删除"
 
 #: templates/books/book_detail.html:9 templates/movies/movie_detail.html:10
 #: templates/people/person_detail.html:6
@@ -80,6 +132,34 @@ msgstr "没有这种类型的电影。"
 #: templates/genres/genres.html:5
 msgid "Choose a genre you wanna see!"
 msgstr "选择一种你想看的类型"
+
+#: templates/home.html:7
+msgid "Latest movies"
+msgstr "电影资料制作"
+
+#: templates/home.html:7 templates/home.html:15 templates/home.html:23
+msgid "See all"
+msgstr "看到所有"
+
+#: templates/home.html:7
+msgid "Add movie"
+msgstr "添宠加宠"
+
+#: templates/home.html:15
+msgid "Latest Books"
+msgstr "最新书"
+
+#: templates/home.html:15
+msgid "Add book"
+msgstr "新增书籍"
+
+#: templates/home.html:23
+msgid "Latest people"
+msgstr "欢迎浏览网页"
+
+#: templates/home.html:23
+msgid "Add person"
+msgstr "加人"
 
 #: templates/movies/movie_detail.html:39
 msgid "Rating"
@@ -160,3 +240,19 @@ msgstr "种类"
 #: templates/users/login.html:20
 msgid "Login"
 msgstr "登录"
+
+#: users/views.py:28
+msgid "Login success"
+msgstr "登录成功"
+
+#: users/views.py:54
+msgid "Congratulation! Welcome!"
+msgstr "恭喜你！ 欢迎！"
+
+#: users/views.py:107
+msgid "Successfully updated your profile."
+msgstr "已成功更新您的个人资料。"
+
+#: users/views.py:122
+msgid "Password changed successfully"
+msgstr "密码更换成功"

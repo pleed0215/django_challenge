@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, reverse
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DeleteView
+from django.views.generic import CreateView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
+from django.utils.translation import gettext_lazy
 
 from core.mixins import LoginOnlyView
 from .models import Review
@@ -17,25 +18,27 @@ class ReviewCreateView(LoginOnlyView, SuccessMessageMixin, CreateView):
     extra_context = {
         "page_title": "Reviewing",
     }
-    fields = ('text', 'rating',)
+    fields = (
+        "text",
+        "rating",
+    )
     template_name = "reviews/create_review.html"
     review_type = None
     obj_pk = None
-    success_message = "Review created."
+    success_message = gettext_lazy("Review created.")
 
     def get_initial(self):
         super().get_initial()
         self.success_url = self.request.GET.get("next", reverse_lazy("core:home"))
         self.review_type = self.request.GET.get("type")
         self.obj_pk = self.kwargs.get("pk")
-        
-    
+
     def form_valid(self, form):
         print(self.review_type)
         if self.review_type is not None:
             obj = None
             is_movie = self.review_type == "movie" and True or False
-            
+
             if is_movie:
                 obj = Movie.objects.get(pk=self.obj_pk)
             else:
@@ -58,11 +61,13 @@ def delete_review(request, pk):
     try:
         review = Review.objects.get(pk=pk)
         next_url = request.GET.get("next")
-        
+
         if review.created_by == request.user:
             review.delete()
 
-        messages.add_message(request, messages.SUCCESS, "Review is deleted")
+        messages.add_message(
+            request, messages.SUCCESS, gettext_lazy("Review is deleted")
+        )
         if next_url is not None:
             return redirect(next_url)
         else:

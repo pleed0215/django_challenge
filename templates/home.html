@@ -4,8 +4,7 @@
 {% block content %}
 <div class="ml-4 flex flex-col items-center w-5/6">
   <div class="flex flex-col w-full border-b mb-8">
-    <h1 class="text-2xl mb-4">Latest movies<a class="text-lg hover:underline" href="{% url 'movies:movies' %}">(See
-        all..)</a><a class="text-lg hover:underline" href="{% url 'movies:create' %}">[Add movie]</a></h1>
+    <h1 class="text-2xl mb-4 flex items-center">{% trans "Latest movies" %}<a class="ml-4 text-sm p-1 bg-purple-200 text-purple-700 hover:text-white hover:bg-purple-700 transition duration-300 rounded" href="{% url 'movies:movies' %}">{% trans "See all" %}</a><a class="ml-2 text-sm p-1 bg-blue-200 text-blue-700 hover:text-white hover:bg-blue-700 transition duration-300 rounded" href="{% url 'movies:create' %}">{% trans "Add movie" %}</a></h1>
     <div class="m-4 grid grid-cols-5 gap-4">
       {% for obj in page.object_list %}
       {% include "mixins/movie.html" with movie=obj.movie %}
@@ -13,8 +12,7 @@
     </div>
   </div>
   <div class="flex flex-col w-full border-b mb-8">
-    <h1 class="text-2xl mb-4">Latest Books<a class="text-lg hover:underline" href="{% url 'books:books' %}">(See
-        all..)</a><a class="text-lg hover:underline" href="{% url 'books:create' %}">[Add book]</a></h1>
+    <h1 class="text-2xl mb-4 flex items-center">{% trans "Latest Books" %}<a class="ml-4 text-sm p-1 bg-purple-200 text-purple-700 hover:text-white hover:bg-purple-700 transition duration-300 rounded" href="{% url 'books:books' %}">{% trans "See all" %}</a><a class="ml-2 text-sm p-1 bg-blue-200 text-blue-700 hover:text-white hover:bg-blue-700 transition duration-300 rounded" href="{% url 'books:create' %}">{% trans "Add book" %}</a></h1>
     <div class="m-4 grid grid-cols-2 grid-cols-5 gap-4">
       {% for obj in page.object_list %}
       {% include "mixins/book.html" with book=obj.book %}
@@ -22,8 +20,7 @@
     </div>
   </div>
   <div class="flex flex-col w-full border-b mb-8">
-    <h1 class="text-2xl mb-4">Latest people<a class="text-lg hover:underline" href="{% url 'people:people' %}">(See
-        all..)</a><a class="text-lg hover:underline" href="{% url 'people:create' %}">[Add person]</a></h1>
+    <h1 class="text-2xl mb-4 flex items-center">{% trans "Latest people" %}<a class="ml-4 text-sm p-1 bg-purple-200 text-purple-700 hover:text-white hover:bg-purple-700 transition duration-300 rounded" href="{% url 'people:people' %}">{% trans "See all" %}</a><a class="ml-2 text-sm p-1 bg-blue-200 text-blue-700 hover:text-white hover:bg-blue-700 transition duration-300 rounded" href="{% url 'people:create' %}">{% trans "Add person" %}</a></h1>
     <div class="m-4 grid grid-cols-5 gap-4">
       {% for obj in page.object_list %}
       {% include "mixins/person.html" with person=obj.person %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import FormView, DetailView, UpdateView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -8,12 +8,12 @@ from django.contrib.auth import (
     login,
     logout,
     views as auth_views,
-    forms as auth_forms,
 )
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.utils import translation
 from django.conf import settings
+from django.utils.translation import gettext_lazy
 
 from core.mixins import LoginOnlyView, LoggedOutOnlyView
 from . import forms
@@ -24,23 +24,20 @@ from .models import User
 class LoginView(LoggedOutOnlyView, SuccessMessageMixin, auth_views.LoginView):
     template_name = "users/login.html"
     form_class = forms.LoginForm
-    extra_context = {
-      "page_title": "Log in"
-    }
-    success_message = "Login success"
-
+    extra_context = {"page_title": "Log in"}
+    success_message = gettext_lazy("Login success")
 
     def form_valid(self, form):
-      username = form.cleaned_data.get("username")
-      password = form.cleaned_data.get("password")
+        username = form.cleaned_data.get("username")
+        password = form.cleaned_data.get("password")
 
-      user = authenticate(self.request, username=username, password=password)
-      if user is not None:  
-        login(self.request, user)
-        return super().form_valid(form)
-      else:
-          print("login failed")
-      return redirect(self.get_success_url())
+        user = authenticate(self.request, username=username, password=password)
+        if user is not None:
+            login(self.request, user)
+            return super().form_valid(form)
+        else:
+            print("login failed")
+        return redirect(self.get_success_url())
 
     def get_success_url(self):
         next_arg = self.request.GET.get("next")
@@ -49,24 +46,23 @@ class LoginView(LoggedOutOnlyView, SuccessMessageMixin, auth_views.LoginView):
         else:
             return reverse("core:home")
 
+
 class SignupView(LoggedOutOnlyView, SuccessMessageMixin, FormView):
     template_name = "users/signup.html"
     form_class = forms.SignupForm
     success_url = reverse_lazy("core:home")
-    success_message = "Congratulation! Welcome!"
-    extra_context = {
-    "page_title": "Sign up"
-    }
+    success_message = gettext_lazy("Congratulation! Welcome!")
+    extra_context = {"page_title": "Sign up"}
 
     def form_valid(self, form):
-      username = form.cleaned_data.get("username")
-      password = form.cleaned_data.get("password1")
+        username = form.cleaned_data.get("username")
+        password = form.cleaned_data.get("password1")
 
-      form.save()
-      user = authenticate(self.request, username=username, password=password)
-      if user is not None:
-          login(self.request, user)
-      return redirect(self.get_success_url())
+        form.save()
+        user = authenticate(self.request, username=username, password=password)
+        if user is not None:
+            login(self.request, user)
+        return redirect(self.get_success_url())
 
 
 @login_required
@@ -77,54 +73,54 @@ def logout_view(request):
 
 
 class UserDetailView(LoginOnlyView, DetailView):
-  class Meta:
-    model = User
-    fields = (
-      "username",
-      "bio",
-      "email",
-      "preference",
-      "language",
-      "fav_book_cat",
-      "fav_movie_cat",
-    )
-  def get_object(self, queryset=None):
-    return self.request.user
+    class Meta:
+        model = User
+        fields = (
+            "username",
+            "bio",
+            "email",
+            "preference",
+            "language",
+            "fav_book_cat",
+            "fav_movie_cat",
+        )
 
-  template_name = "users/profile.html"
-  extra_context = {
-    "page_title": "Profile"
-  }
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    template_name = "users/profile.html"
+    extra_context = {"page_title": "Profile"}
+
 
 class UpdateProfileView(LoginOnlyView, SuccessMessageMixin, UpdateView):
 
-  model = User
-  fields = (
-    "bio",
-    "email",
-    "preference",
-    "language",
-    "fav_book_cat",
-    "fav_movie_cat",
-  )
-  extra_context = {
-    "page_title": "Edit Profile"
-  }
-  success_message = "Successfully updated your profile."
-  def get_object(self, queryset=None):
-    return self.request.user
+    model = User
+    fields = (
+        "bio",
+        "email",
+        "preference",
+        "language",
+        "fav_book_cat",
+        "fav_movie_cat",
+    )
+    extra_context = {"page_title": "Edit Profile"}
+    success_message = gettext_lazy("Successfully updated your profile.")
 
-  template_name = "users/update_profile.html"
+    def get_object(self, queryset=None):
+        return self.request.user
 
-  success_url = reverse_lazy("users:profile")
+    template_name = "users/update_profile.html"
 
-class UpdatePasswordView(LoginOnlyView, SuccessMessageMixin, auth_views.PasswordChangeView):
-  template_name = "users/edit_password.html"
-  success_url = reverse_lazy("users:update")
-  success_message = "Password changed successfully"
-  extra_context = {
-    "page_title": "Password change"
-  }
+    success_url = reverse_lazy("users:profile")
+
+
+class UpdatePasswordView(
+    LoginOnlyView, SuccessMessageMixin, auth_views.PasswordChangeView
+):
+    template_name = "users/edit_password.html"
+    success_url = reverse_lazy("users:update")
+    success_message = gettext_lazy("Password changed successfully")
+    extra_context = {"page_title": "Password change"}
 
 
 def switch_language(request):
