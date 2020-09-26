@@ -179,7 +179,7 @@ USE_TZ = True
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, "locale"),)
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['http://django-challenge-dev.ap-northeast-2.elasticbeanstalk.com/']
 X_FRAME_OPTIONS = '*'
 
 
