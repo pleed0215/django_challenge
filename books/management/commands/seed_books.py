@@ -26,7 +26,7 @@ class Command(BaseCommand):
                 "year": lambda x: seeder.faker.year(),
                 "rating": lambda x: randint(1, 5),
                 "category": lambda x: choice(categories),
-                "cover_image": lambda x: f"/bookcover/_{randint(1,20)}.jpg",
+                "cover_image": lambda x: f"bookcover/_{randint(1,20)}.jpg",
                 "writer": lambda x: choice(writers),
             })
         seeder.execute()

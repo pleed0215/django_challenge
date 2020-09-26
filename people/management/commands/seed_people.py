@@ -17,7 +17,7 @@ class Command(BaseCommand):
         seeder.add_entity(Person, total, {
             "name": lambda x: seeder.faker.name(),
             "kind": lambda x: choice([Person.KIND_ACTOR, Person.KIND_DIRECTOR, Person.KIND_WRITER]),
-            "photo": lambda x: f"/portraits/{randint(1,21)}.jpg",
+            "photo": lambda x: f"portraits/{randint(1,21)}.jpg",
         })
         seeder.execute()
         self.stdout.write(self.style.SUCCESS(f'{total} people created!'))
