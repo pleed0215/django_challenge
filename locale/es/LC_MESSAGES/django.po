@@ -175,7 +175,7 @@ msgstr "Yeso"
 
 #: templates/movies/movies.html:6
 msgid "Create a movie"
-msgstr "Vídeo"
+msgstr "Crear una película"
 
 #: templates/movies/movies.html:7
 msgid "Welcome to movies"
