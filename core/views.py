@@ -11,12 +11,15 @@ from categories.models import Category
 def resolve_home(request):
     page = int(request.GET.get("page", 1))
     page_size = 10
-    all_people = Person.objects.all().order_by("-created_at")[: page_size * 3]
-    all_books = Book.objects.all().order_by("-year")[: page_size * 3]
-    all_movies = Movie.objects.all().order_by("-year")[: page_size * 3]
+
+    min_count = min(Person.objects.count(), Book.objects.count(), Movie.objects.count())
+    min_count = min_count >= page_size * 3 and page_size * 3 or min_count
+    all_people = Person.objects.all().order_by("-created_at")[:min_count]
+    all_books = Book.objects.all().order_by("-year")[:min_count]
+    all_movies = Movie.objects.all().order_by("-year")[:min_count]
 
     all_objects = []
-    for i in range(30):
+    for i in range(min_count):
         all_objects.append(
             {
                 "person": all_people[i],
