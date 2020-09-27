@@ -27,7 +27,6 @@ def resolve_home(request):
                 "movie": all_movies[i],
             }
         )
-    print(all_objects)
 
     paginator = Paginator(all_objects, page_size, allow_empty_first_page=True)
     try:
@@ -57,7 +56,6 @@ def resolve_search(request):
         Q(name__icontains=search_term) | Q(kind__icontains=search_term)
     )
 
-    print(found_books)
     return render(
         request,
         "search.html",
