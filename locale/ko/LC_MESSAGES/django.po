@@ -139,7 +139,7 @@ msgstr "전체 보기"
 
 #: templates/home.html:7
 msgid "Add movie"
-msgstr "즐겨찾기에 추가"
+msgstr "영화 자료 추가"
 
 #: templates/home.html:15
 msgid "Latest Books"
