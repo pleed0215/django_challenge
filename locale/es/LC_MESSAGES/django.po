@@ -127,7 +127,7 @@ msgstr "No hay películas fundadas en este género."
 
 #: templates/genres/genres.html:5
 msgid "Choose a genre you wanna see!"
-msgstr "No hay ninguna película de este tipo."
+msgstr "¡Elige un género que quieras ver!"
 
 #: templates/home.html:7
 msgid "Latest movies"
