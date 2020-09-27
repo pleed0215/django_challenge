@@ -24,8 +24,9 @@ def resolve_home(request):
                 "movie": all_movies[i],
             }
         )
+    print(all_objects)
 
-    paginator = Paginator(all_objects, page_size)
+    paginator = Paginator(all_objects, page_size, allow_empty_first_page=True)
     try:
         page = paginator.page(page)
 
