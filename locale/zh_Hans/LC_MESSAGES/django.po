@@ -90,12 +90,12 @@ msgstr "已作检讨"
 #: templates/books/book_detail.html:23 templates/mixins/book.html:18
 #: templates/mixins/movie.html:17 templates/movies/movie_detail.html:24
 msgid "Remove from favorites"
-msgstr "从偏心眼上移开"
+msgstr "从收藏夹列表中删除"
 
 #: templates/books/book_detail.html:26 templates/mixins/book.html:21
 #: templates/mixins/movie.html:21 templates/movies/movie_detail.html:27
 msgid "Add to favorites"
-msgstr "添宠加宠"
+msgstr "添加到收藏夹列表"
 
 #: templates/books/book_detail.html:38
 msgid "Writer"
@@ -183,7 +183,7 @@ msgstr "欢迎看电影"
 
 #: templates/partials/header.html:7
 msgid "Home"
-msgstr "Home"
+msgstr "首页"
 
 #: templates/partials/header.html:12
 msgid "Movies"
@@ -199,7 +199,7 @@ msgstr "体裁"
 
 #: templates/partials/header.html:27
 msgid "People"
-msgstr "People"
+msgstr "人们"
 
 #: templates/partials/header.html:34
 msgid "Search by kind, movie or book title, genre."
