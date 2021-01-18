@@ -5,7 +5,7 @@
 <div class="flex flex-col items-center">
   <a class="border bg-gray-200 p-2 mb-4 hover:bg-gray-700 hover:text-white transition duration-300 rounded text-center w-full" href="{% url 'people:create' %}">{% trans "Create a Person" %}</a>
   <h1 class="text-2xl">{% trans "Welcome to people" %}</h1>
-    <div class="m-4 grid grid-cols-5">
+    <div class="m-4 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-2">
   {% for person in people %}
     {% include "mixins/person.html" with person=person %}
   {% endfor %}
